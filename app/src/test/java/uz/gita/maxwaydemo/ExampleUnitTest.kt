@@ -1,4 +1,4 @@
-package uz.gita.deliveryapp
+package uz.gita.maxwaydemo
 
 import org.junit.Test
 

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/line"
+        android:layout_width="32dp"
+        android:layout_height="4dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/bg_dialog"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/language"
+        style="@style/language_dialog_linearlayout_style"
+        app:layout_constraintBottom_toTopOf="@+id/languageUzbek"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/line">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="24sp"
+
+            android:text="Language" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/languageUzbek"
+        style="@style/language_dialog_linearlayout_style"
+        app:layout_constraintBottom_toTopOf="@+id/languageRussian"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/language">
+
+        <ImageView
+            android:src="@drawable/uzbek_flag"
+            style="@style/language_dialog_imageView_style" />
+
+        <TextView
+            style="@style/language_dialog_texts_style"
+            android:text="Uzbek" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/languageRussian"
+        style="@style/language_dialog_linearlayout_style"
+        app:layout_constraintBottom_toTopOf="@+id/languageEnglish"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/languageUzbek">
+
+        <ImageView
+            style="@style/language_dialog_imageView_style"
+            android:src="@drawable/russian_flag" />
+
+        <TextView
+            style="@style/language_dialog_texts_style"
+            android:text="Русский" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/languageEnglish"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/languageRussian"
+        style="@style/language_dialog_linearlayout_style">
+
+        <ImageView
+            style="@style/language_dialog_imageView_style"
+            android:src="@drawable/english_flag" />
+
+        <TextView
+            style="@style/language_dialog_texts_style"
+            android:text="English"/>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

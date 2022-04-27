@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "664786324215",
+    "project_id": "max-way-clone",
+    "storage_bucket": "max-way-clone.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:664786324215:android:2143a19875345b19d461f2",
+        "android_client_info": {
+          "package_name": "uz.gita.maxwaydemo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "664786324215-vas8v1iuiivi2ae4hr503m5ntpfmtgg2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDM1fNiq8OtWLPHHbLdj0cTYXpkAGAvPpQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "664786324215-vas8v1iuiivi2ae4hr503m5ntpfmtgg2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
