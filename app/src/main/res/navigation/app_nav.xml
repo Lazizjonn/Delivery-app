@@ -9,7 +9,11 @@
         android:id="@+id/homeFragment"
         android:name="uz.gita.maxwaydemo.ui.screens.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_pickDetailFragment"
+            app:destination="@id/pickDetailFragment" />
+    </fragment>
     <fragment
         android:id="@+id/splashFragment"
         android:name="uz.gita.maxwaydemo.ui.screens.SplashFragment"
@@ -37,5 +41,10 @@
         android:name="uz.gita.maxwaydemo.ui.screens.HostFragment"
         android:label="fragment_host"
         tools:layout="@layout/fragment_host" />
+    <fragment
+        android:id="@+id/pickDetailFragment"
+        android:name="uz.gita.maxwaydemo.ui.screens.PickDetailFragment"
+        android:label="fragment_pick_detail"
+        tools:layout="@layout/fragment_pick_detail" />
 
 </navigation>

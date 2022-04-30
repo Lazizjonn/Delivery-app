@@ -26,6 +26,8 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
         setAdViewPager()
+
+
         binding.button.setOnClickListener {
 //            findNavController().navigate(R.id.aboutServiceFragment)
         }
@@ -40,7 +42,6 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         binding.adViewPagerLayout.adapter = AdPagerAdapter2(requireContext(), list )
         autoPaging()
     }
-
     fun autoPaging(){
         val pager: ViewPager? = binding.adViewPagerLayout
         val handler =  Handler(Looper.getMainLooper())
@@ -61,13 +62,5 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         }
     }
 
-
-    override fun onResume() {
-        super.onResume()
-    }
-
-    override fun onStop() {
-        super.onStop()
-    }
 
 }
