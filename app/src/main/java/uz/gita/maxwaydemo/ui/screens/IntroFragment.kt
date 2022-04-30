@@ -47,6 +47,6 @@ class IntroFragment : Fragment(R.layout.fragment_intro) {
     }
 
     private val openHomeFragmentObserver = Observer<Unit> {
-        findNavController().navigate(IntroFragmentDirections.actionIntroFragmentToHomeFragment())
+        findNavController().navigate(IntroFragmentDirections.actionIntroFragmentToHostFragment())
     }
 }

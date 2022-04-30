@@ -26,7 +26,7 @@ class SplashFragment : Fragment(R.layout.fragment_splash) {
     }
 
     private val openHomeFragmentObserver = Observer<Unit>() {
-        findNavController().navigate(SplashFragmentDirections.actionSplashFragmentToHomeFragment())
+        findNavController().navigate(SplashFragmentDirections.actionSplashFragmentToHostFragment())
     }
 
     private val openIntroFragmentObserver = Observer <Unit> {

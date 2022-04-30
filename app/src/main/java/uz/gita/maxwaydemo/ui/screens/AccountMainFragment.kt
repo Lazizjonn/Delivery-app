@@ -5,6 +5,8 @@ import dagger.hilt.android.AndroidEntryPoint
 import uz.gita.maxwaydemo.R
 
 @AndroidEntryPoint
-class OrderFragment : Fragment(R.layout.fragment_order) {
+class AccountMainFragment() : Fragment(R.layout.fragment_account) {
+
+
 
 }

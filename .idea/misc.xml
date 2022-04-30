@@ -5,6 +5,25 @@
       <map>
         <entry key="..\:/AndroidStudioProjects/2_Working_on_projects/DeliveryApp/app/src/main/res/drawable/bg_dialog.xml" value="0.1325" />
         <entry key="..\:/AndroidStudioProjects/2_Working_on_projects/DeliveryApp/app/src/main/res/layout/activity_main.xml" value="0.19739583333333333" />
+        <entry key="..\:/Program Files/Android/AndroidPROJECTS/deliveryapp2/app/src/main/res/drawable-v24/bottom_nav_background.xml" value="0.1015" />
+        <entry key="..\:/Program Files/Android/AndroidPROJECTS/deliveryapp2/app/src/main/res/drawable-v24/ic_accounts.xml" value="0.112" />
+        <entry key="..\:/Program Files/Android/AndroidPROJECTS/deliveryapp2/app/src/main/res/drawable-v24/ic_home.xml" value="0.112" />
+        <entry key="..\:/Program Files/Android/AndroidPROJECTS/deliveryapp2/app/src/main/res/drawable/bg_dialog.xml" value="0.112" />
+        <entry key="..\:/Program Files/Android/AndroidPROJECTS/deliveryapp2/app/src/main/res/drawable/ic_active_buy.xml" value="0.112" />
+        <entry key="..\:/Program Files/Android/AndroidPROJECTS/deliveryapp2/app/src/main/res/drawable/ic_active_home.xml" value="0.112" />
+        <entry key="..\:/Program Files/Android/AndroidPROJECTS/deliveryapp2/app/src/main/res/drawable/ic_active_profile.xml" value="0.112" />
+        <entry key="..\:/Program Files/Android/AndroidPROJECTS/deliveryapp2/app/src/main/res/drawable/ic_chevron_right.xml" value="0.112" />
+        <entry key="..\:/Program Files/Android/AndroidPROJECTS/deliveryapp2/app/src/main/res/drawable/ic_home.xml" value="0.124" />
+        <entry key="..\:/Program Files/Android/AndroidPROJECTS/deliveryapp2/app/src/main/res/drawable/ic_notification.xml" value="0.112" />
+        <entry key="..\:/Program Files/Android/AndroidPROJECTS/deliveryapp2/app/src/main/res/drawable/ic_profile.xml" value="0.112" />
+        <entry key="..\:/Program Files/Android/AndroidPROJECTS/deliveryapp2/app/src/main/res/drawable/ic_search.xml" value="0.112" />
+        <entry key="..\:/Program Files/Android/AndroidPROJECTS/deliveryapp2/app/src/main/res/drawable/ic_send.xml" value="0.112" />
+        <entry key="..\:/Program Files/Android/AndroidPROJECTS/deliveryapp2/app/src/main/res/drawable/ic_tick_square.xml" value="0.112" />
+        <entry key="..\:/Program Files/Android/AndroidPROJECTS/deliveryapp2/app/src/main/res/layout/fragment_account.xml" value="0.140625" />
+        <entry key="..\:/Program Files/Android/AndroidPROJECTS/deliveryapp2/app/src/main/res/layout/fragment_host.xml" value="0.140625" />
+        <entry key="..\:/Program Files/Android/AndroidPROJECTS/deliveryapp2/app/src/main/res/layout/fragment_order.xml" value="0.140625" />
+        <entry key="..\:/Program Files/Android/AndroidPROJECTS/deliveryapp2/app/src/main/res/menu/bottom_menu.xml" value="0.140625" />
+        <entry key="..\:/Program Files/Android/AndroidPROJECTS/deliveryapp2/app/src/main/res/menu/bottombar_menu.xml" value="0.1796875" />
       </map>
     </option>
   </component>
