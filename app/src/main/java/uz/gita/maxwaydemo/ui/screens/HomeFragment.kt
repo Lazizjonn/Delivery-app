@@ -26,9 +26,8 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
         setAdViewPager()
-
         binding.button.setOnClickListener {
-            findNavController().navigate(R.id.aboutServiceFragment)
+//            findNavController().navigate(R.id.aboutServiceFragment)
         }
     }
 

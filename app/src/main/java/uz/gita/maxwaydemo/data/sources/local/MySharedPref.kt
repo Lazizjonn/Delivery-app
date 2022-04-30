@@ -10,5 +10,8 @@ class MySharedPref @Inject constructor(@ApplicationContext context: Context) {
 
     private val pref = context.getSharedPreferences("delivery", Context.MODE_PRIVATE)
 
+    var isNotFirstTime: Boolean
+        get() = pref!!.getBoolean("INTRO", false)
+        set(value) = pref!!.edit().putBoolean("INTRO", value).apply()
 
 }

@@ -18,11 +18,6 @@ class LanguageDialog : BottomSheetDialogFragment() {
     }
 
 
-
-
-
-
-
     fun setRussianLanguageListener(block: () -> Unit) {
         clickRussianLanguageListener = block
     }
