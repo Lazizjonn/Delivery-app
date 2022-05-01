@@ -12,7 +12,7 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 import uz.gita.maxwaydemo.R
 import uz.gita.maxwaydemo.data.sources.local.common.AdPagerData
 
-
+// ishlatilmayabdi
 class AdPagerAdapter2 (@ApplicationContext private val context: Context,
                        private val list: List<AdPagerData>): PagerAdapter() {
 

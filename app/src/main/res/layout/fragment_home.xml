@@ -22,10 +22,13 @@
         app:showDividers="middle" />
 
 
-    <androidx.viewpager.widget.ViewPager
+    <com.asksira.loopingviewpager.LoopingViewPager
         android:id="@+id/ad_viewPager_layout"
         android:layout_width="wrap_content"
-        android:layout_height="100dp"
+        android:layout_height="130dp"
+        app:isInfinite="true"
+        app:autoScroll="true"
+        app:scrollInterval="2000"
         app:layout_constraintBottom_toTopOf="@+id/menu_collapsing_toolbar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

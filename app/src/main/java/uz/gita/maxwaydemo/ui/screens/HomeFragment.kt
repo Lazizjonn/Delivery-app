@@ -6,18 +6,15 @@ import android.os.Looper
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
-import androidx.navigation.fragment.findNavController
 import androidx.viewpager.widget.ViewPager
 import by.kirich1409.viewbindingdelegate.viewBinding
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.cancel
 import kotlinx.coroutines.delay
-import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
 import uz.gita.maxwaydemo.R
 import uz.gita.maxwaydemo.data.sources.local.common.AdPagerData
 import uz.gita.maxwaydemo.databinding.FragmentHomeBinding
-import uz.gita.maxwaydemo.ui.adapter.AdPagerAdapter2
+import uz.gita.maxwaydemo.ui.adapter.AdLoopingPagerAdapter
 
 @AndroidEntryPoint
 class HomeFragment : Fragment(R.layout.fragment_home) {
@@ -34,13 +31,15 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     }
 
     private fun setAdViewPager() {
-        val list = listOf(AdPagerData(R.drawable.lavash_image, "Lavashga hush kelibsiz"),
-            AdPagerData(R.drawable.lavash_image, "Lavashga hush kelibsiz"),
-            AdPagerData(R.drawable.lavash_image, "Lavashga hush kelibsiz"),
-            AdPagerData(R.drawable.lavash_image, "Lavashga hush kelibsiz"))
+        val list = listOf(AdPagerData(R.drawable.lavash_image, "1. Lavashga hush kelibsiz"),
+            AdPagerData(R.drawable.lavash_image, "2. Lavashga hush kelibsiz"),
+            AdPagerData(R.drawable.lavash_image, "3. Lavashga hush kelibsiz"),
+            AdPagerData(R.drawable.lavash_image, "4. Lavashga hush kelibsiz"))
 
-        binding.adViewPagerLayout.adapter = AdPagerAdapter2(requireContext(), list )
-        autoPaging()
+//        binding.adViewPagerLayout.adapter = AdPagerAdapter2(requireContext(), list ) // notLoopingAdapter
+        binding.adViewPagerLayout.adapter = AdLoopingPagerAdapter(requireContext(), list, true)  // LoopingAdapter
+
+//        autoPaging()  // kerakmas
     }
     fun autoPaging(){
         val pager: ViewPager? = binding.adViewPagerLayout
@@ -60,6 +59,17 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
                 }
             }
         }
+    }
+
+
+    override fun onResume() {
+        binding.adViewPagerLayout.resumeAutoScroll()  // for AutoLoopingViewPager
+        super.onResume()
+    }
+
+    override fun onPause() {
+        binding.adViewPagerLayout.pauseAutoScroll()  // for AutoLoopingViewPager
+        super.onPause()
     }
 
 
