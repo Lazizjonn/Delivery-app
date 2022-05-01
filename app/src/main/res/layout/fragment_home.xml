@@ -31,34 +31,25 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/searchView" />
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingStart="5dp"
-        android:paddingTop="5dp"
-        android:paddingEnd="5dp"
-        android:text="Button"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/ad_viewPager_layout" />
-
     <androidx.appcompat.widget.LinearLayoutCompat
         android:id="@+id/menu_collapsing_toolbar"
         android:layout_width="match_parent"
         android:layout_height="45dp"
-        app:layout_constraintBottom_toTopOf="@+id/category_recyclerview"
+        app:layout_constraintBottom_toTopOf="@+id/category_recyclerview_self"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ad_viewPager_layout" />
 
+
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/category_recyclerview"
+        android:id="@+id/category_recyclerview_self"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/menu_collapsing_toolbar" />
+        app:layout_constraintTop_toBottomOf="@+id/menu_collapsing_toolbar"
+        tools:listitem="@layout/item_inner" />
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>

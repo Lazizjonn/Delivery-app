@@ -3,13 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/app_nav"
-    app:startDestination="@id/splashFragment">
+    app:startDestination="@id/homeFragment">
 
     <fragment
         android:id="@+id/homeFragment"
         android:name="uz.gita.maxwaydemo.ui.screens.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" >
+        tools:layout="@layout/fragment_home">
         <action
             android:id="@+id/action_homeFragment_to_pickDetailFragment"
             app:destination="@id/pickDetailFragment" />
@@ -18,7 +18,7 @@
         android:id="@+id/splashFragment"
         android:name="uz.gita.maxwaydemo.ui.screens.SplashFragment"
         android:label="fragment_splash"
-        tools:layout="@layout/fragment_splash" >
+        tools:layout="@layout/fragment_splash">
         <action
             android:id="@+id/action_splashFragment_to_introFragment"
             app:destination="@id/introFragment" />
@@ -31,11 +31,12 @@
         android:id="@+id/introFragment"
         android:name="uz.gita.maxwaydemo.ui.screens.IntroFragment"
         android:label="fragment_intro"
-        tools:layout="@layout/fragment_intro" >
+        tools:layout="@layout/fragment_intro">
         <action
             android:id="@+id/action_introFragment_to_hostFragment"
             app:destination="@id/hostFragment" />
     </fragment>
+    foodName, foodPhoto, foodDescription
     <fragment
         android:id="@+id/hostFragment"
         android:name="uz.gita.maxwaydemo.ui.screens.HostFragment"
@@ -45,6 +46,16 @@
         android:id="@+id/pickDetailFragment"
         android:name="uz.gita.maxwaydemo.ui.screens.PickDetailFragment"
         android:label="fragment_pick_detail"
-        tools:layout="@layout/fragment_pick_detail" />
+        tools:layout="@layout/fragment_pick_detail" >
+        <argument
+            android:name="foodname"
+            app:argType="string" />
+        <argument
+            android:name="foodPhoto"
+            app:argType="integer" />
+        <argument
+            android:name="foodDescription"
+            app:argType="string" />
+    </fragment>
 
 </navigation>
