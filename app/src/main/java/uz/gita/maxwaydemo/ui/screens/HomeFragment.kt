@@ -19,9 +19,9 @@ import uz.gita.maxwaydemo.data.sources.local.common.AdPagerData
 import uz.gita.maxwaydemo.data.sources.model.response.CategoryData
 import uz.gita.maxwaydemo.data.sources.model.response.FoodData
 import uz.gita.maxwaydemo.databinding.FragmentHomeBinding
+import uz.gita.maxwaydemo.ui.adapter.AdLoopingPagerAdapter
 import uz.gita.maxwaydemo.ui.adapter.AdPagerAdapter2
 import uz.gita.maxwaydemo.ui.adapter.CategoryAdapter
-import uz.gita.maxwaydemo.ui.adapter.AdLoopingPagerAdapter
 
 @AndroidEntryPoint
 class HomeFragment : Fragment(R.layout.fragment_home) {
@@ -71,15 +71,11 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
     private fun setAdViewPager() {
         val list = listOf(
-            AdPagerData(R.drawable.lavash_image, "Lavashga hush kelibsiz"),
-            AdPagerData(R.drawable.lavash_image, "Lavashga hush kelibsiz"),
-            AdPagerData(R.drawable.lavash_image, "Lavashga hush kelibsiz"),
-            AdPagerData(R.drawable.lavash_image, "Lavashga hush kelibsiz")
-        )
-        val list = listOf(AdPagerData(R.drawable.lavash_image, "1. Lavashga hush kelibsiz"),
+            AdPagerData(R.drawable.lavash_image, "1. Lavashga hush kelibsiz"),
             AdPagerData(R.drawable.lavash_image, "2. Lavashga hush kelibsiz"),
             AdPagerData(R.drawable.lavash_image, "3. Lavashga hush kelibsiz"),
-            AdPagerData(R.drawable.lavash_image, "4. Lavashga hush kelibsiz"))
+            AdPagerData(R.drawable.lavash_image, "4. Lavashga hush kelibsiz")
+        )
 
         binding.adViewPagerLayout.adapter = AdPagerAdapter2(requireContext(), list)
         autoPaging()
