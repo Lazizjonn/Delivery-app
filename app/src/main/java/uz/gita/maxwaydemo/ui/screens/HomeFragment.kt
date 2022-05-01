@@ -21,6 +21,7 @@ import uz.gita.maxwaydemo.data.sources.model.response.FoodData
 import uz.gita.maxwaydemo.databinding.FragmentHomeBinding
 import uz.gita.maxwaydemo.ui.adapter.AdPagerAdapter2
 import uz.gita.maxwaydemo.ui.adapter.CategoryAdapter
+import uz.gita.maxwaydemo.ui.adapter.AdLoopingPagerAdapter
 
 @AndroidEntryPoint
 class HomeFragment : Fragment(R.layout.fragment_home) {
@@ -75,9 +76,17 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
             AdPagerData(R.drawable.lavash_image, "Lavashga hush kelibsiz"),
             AdPagerData(R.drawable.lavash_image, "Lavashga hush kelibsiz")
         )
+        val list = listOf(AdPagerData(R.drawable.lavash_image, "1. Lavashga hush kelibsiz"),
+            AdPagerData(R.drawable.lavash_image, "2. Lavashga hush kelibsiz"),
+            AdPagerData(R.drawable.lavash_image, "3. Lavashga hush kelibsiz"),
+            AdPagerData(R.drawable.lavash_image, "4. Lavashga hush kelibsiz"))
 
         binding.adViewPagerLayout.adapter = AdPagerAdapter2(requireContext(), list)
         autoPaging()
+//        binding.adViewPagerLayout.adapter = AdPagerAdapter2(requireContext(), list ) // notLoopingAdapter
+        binding.adViewPagerLayout.adapter = AdLoopingPagerAdapter(requireContext(), list, true)  // LoopingAdapter
+
+//        autoPaging()  // kerakmas
     }
 
     private fun autoPaging() {
@@ -107,6 +116,17 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
                 }
             }
         }
+    }
+
+
+    override fun onResume() {
+        binding.adViewPagerLayout.resumeAutoScroll()  // for AutoLoopingViewPager
+        super.onResume()
+    }
+
+    override fun onPause() {
+        binding.adViewPagerLayout.pauseAutoScroll()  // for AutoLoopingViewPager
+        super.onPause()
     }
 
 
