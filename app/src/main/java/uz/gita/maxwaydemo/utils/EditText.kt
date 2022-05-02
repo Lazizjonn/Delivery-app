@@ -1,4 +1,4 @@
-package uz.gita.contactappretrofit.utils
+package uz.gita.maxwaydemo.utils
 
 import android.widget.EditText
 import androidx.core.widget.addTextChangedListener

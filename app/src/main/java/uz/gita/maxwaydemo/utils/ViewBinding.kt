@@ -1,4 +1,4 @@
-package uz.gita.contactappretrofit.utils
+package uz.gita.maxwaydemo.utils
 
 import androidx.viewbinding.ViewBinding
 
