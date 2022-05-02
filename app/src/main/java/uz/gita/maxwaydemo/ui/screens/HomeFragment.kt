@@ -5,6 +5,8 @@ import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -15,6 +17,9 @@ import uz.gita.maxwaydemo.data.sources.local.model.common.AdPagerData
 import uz.gita.maxwaydemo.data.sources.local.model.common.ToolbarData
 import uz.gita.maxwaydemo.data.sources.local.model.common.CategoryDataRV
 import uz.gita.maxwaydemo.data.sources.local.model.common.FoodDataRV
+import uz.gita.maxwaydemo.data.sources.local.model.response.AdsDataFromNet
+import uz.gita.maxwaydemo.data.sources.local.model.response.CategoryDataFromNet
+import uz.gita.maxwaydemo.data.sources.local.model.response.FoodDataFromNet
 import uz.gita.maxwaydemo.databinding.FragmentHomeBinding
 import uz.gita.maxwaydemo.presentation.viewmodel.HomeViewModel
 import uz.gita.maxwaydemo.presentation.viewmodel.impl.HomeViewModelImpl
@@ -37,7 +42,30 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         setAdViewPager()
         doubleRecycleView()
         toolbarRecycleView()
+
+        viewModel.adsLiveData.observe(viewLifecycleOwner, adsObserver)
+        viewModel.categoryLiveData.observe(viewLifecycleOwner,categoryObserver)
+        viewModel.foodsLiveData.observe(viewLifecycleOwner, foodsObserver)
+        viewModel.foodsBySearchLiveData.observe(viewLifecycleOwner, foodsBySearchObserver)
+        viewModel.errorLiveData.observe(viewLifecycleOwner, errorObserver)
+        viewModel.openPickDetailFragmentLiveData.observe(viewLifecycleOwner, openPickDetailFragmentObserver)
+        viewModel.openAdvertisementFragmentLiveData.observe(viewLifecycleOwner, openAdvertisementFragmentObserver)
+
     }
+
+    private val adsObserver = Observer<List<AdsDataFromNet>> { }
+    private val categoryObserver = Observer<List<CategoryDataFromNet>> { }
+    private val foodsObserver = Observer<Pair<List<List<FoodDataFromNet>>, List<CategoryDataFromNet>>> { }
+    private val foodsBySearchObserver = Observer<List<FoodDataFromNet>> { }
+    private val errorObserver = Observer<String> { }
+    private val openPickDetailFragmentObserver = Observer<Unit> { }
+    private val openAdvertisementFragmentObserver = Observer<Unit> { }
+
+
+
+
+
+
 
 
 

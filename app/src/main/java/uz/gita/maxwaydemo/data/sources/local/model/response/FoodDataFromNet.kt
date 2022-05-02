@@ -1,8 +1,5 @@
 package uz.gita.maxwaydemo.data.sources.local.model.response
 
-import java.io.FileDescriptor
-
-
 data class FoodDataFromNet(
     val id: Int,
     val categoryID: Int,

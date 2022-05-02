@@ -55,8 +55,10 @@ class AppRepositoryImpl @Inject constructor(
             }
             trySendBlocking(Result.success(data)).onFailure { trySendBlocking(Result.failure(Exception(it))) }
         }
-            .addOnFailureListener { trySendBlocking(Result.failure(it)) }
-        awaitClose {}
+                 .addOnFailureListener {
+                trySendBlocking(Result.failure(it))
+            }
+                  awaitClose {}
     }.flowOn(Dispatchers.IO)
 
     override fun getAllCategoriesPhotosFromFirebase() = callbackFlow<Result<List<CategoryDataFromNet>>> {
@@ -66,9 +68,9 @@ class AppRepositoryImpl @Inject constructor(
             }
             trySendBlocking(Result.success(data)).onFailure { trySendBlocking(Result.failure(java.lang.Exception(it))) }
         }
-            .addOnFailureListener { trySendBlocking(Result.failure(it)) }
-            awaitClose { }
-
+                        .addOnFailureListener {
+                            trySendBlocking(Result.failure(it)) }
+                         awaitClose {}
     }.flowOn(Dispatchers.IO)
 
     override fun getAllFoodsPhotosFromFirebase() = channelFlow<Result<List<FoodDataFromNet>>> {
