@@ -6,10 +6,10 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import uz.gita.maxwaydemo.R
-import uz.gita.maxwaydemo.data.sources.local.model.response.CategoryData
+import uz.gita.maxwaydemo.data.sources.local.model.common.CategoryDataRV
 import uz.gita.maxwaydemo.databinding.ItemOutherBinding
 
-class CategoryAdapter(private val list: List<CategoryData>) : RecyclerView.Adapter<CategoryAdapter.CategoryViewHolder>() {
+class CategoryAdapter(private val list: List<CategoryDataRV>) : RecyclerView.Adapter<CategoryAdapter.CategoryViewHolder>() {
 
     private var clickCategoryNameListener: ((Int) -> Unit)? = null
     private var foodClickListener: ((String, Int, String) -> Unit)? = null

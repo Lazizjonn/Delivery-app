@@ -5,10 +5,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import uz.gita.maxwaydemo.R
-import uz.gita.maxwaydemo.data.sources.local.model.response.FoodData
+import uz.gita.maxwaydemo.data.sources.local.model.common.FoodDataRV
 import uz.gita.maxwaydemo.databinding.ItemInnerBinding
 
-class FoodAdapter(private val list: List<FoodData>) : RecyclerView.Adapter<FoodAdapter.FoodViewHolder>() {
+class FoodAdapter(private val list: List<FoodDataRV>) : RecyclerView.Adapter<FoodAdapter.FoodViewHolder>() {
 
     private var foodClickListener: ((String, Int, String) -> Unit)? = null
 

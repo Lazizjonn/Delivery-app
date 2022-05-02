@@ -9,8 +9,8 @@ import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.flow.flowOn
 import uz.gita.maxwaydemo.R
 import uz.gita.maxwaydemo.data.sources.local.model.common.IntroData
-import uz.gita.maxwaydemo.data.sources.local.model.response.AdsData
-import uz.gita.maxwaydemo.data.sources.local.model.response.CategoryDataFromFirebase
+import uz.gita.maxwaydemo.data.sources.local.model.response.AdsDataFromNet
+import uz.gita.maxwaydemo.data.sources.local.model.response.CategoryDataFromNet
 import uz.gita.maxwaydemo.domain.repository.AppRepository
 import javax.inject.Inject
 
@@ -42,11 +42,11 @@ class AppRepositoryImpl @Inject constructor(
         return images
     }
 
-    override fun getAllAddsPhotosFromFirebase() = callbackFlow<Result<List<AdsData>>> {
+    override fun getAllAddsPhotosFromFirebase() = callbackFlow<Result<List<AdsDataFromNet>>> {
 
         ads.get().addOnSuccessListener { querySnapshot ->
             val data = querySnapshot.map { queryDocumentSnapshot ->
-                queryDocumentSnapshot.toObject(AdsData::class.java)
+                queryDocumentSnapshot.toObject(AdsDataFromNet::class.java)
             }
             trySendBlocking(Result.success(data)).onFailure { trySendBlocking(Result.failure(Exception(it))) }
         }
@@ -54,10 +54,10 @@ class AppRepositoryImpl @Inject constructor(
         awaitClose {}
     }.flowOn(Dispatchers.IO)
 
-    override fun getAllCategoriesPhotosFromFirebase() = callbackFlow<Result<List<CategoryDataFromFirebase>>> {
+    override fun getAllCategoriesPhotosFromFirebase() = callbackFlow<Result<List<CategoryDataFromNet>>> {
         categories.get().addOnSuccessListener { querySnapshot ->
             val data = querySnapshot.map { queryDocumentSnapshot ->
-                queryDocumentSnapshot.toObject(CategoryDataFromFirebase::class.java)
+                queryDocumentSnapshot.toObject(CategoryDataFromNet::class.java)
             }
             trySendBlocking(Result.success(data)).onFailure { trySendBlocking(Result.failure(java.lang.Exception(it))) }
         }

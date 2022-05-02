@@ -1,6 +1,6 @@
-package uz.gita.maxwaydemo.data.sources.local.model.response
+package uz.gita.maxwaydemo.data.sources.local.model.common
 
-data class FoodData(
+data class FoodDataRV(
     val foodName: String,
     val foodPhoto: Int,
     val foodCost: String,

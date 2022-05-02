@@ -1,6 +1,6 @@
 package uz.gita.maxwaydemo.data.sources.local.model.response
 
-data class AdsData(
+data class AdsDataFromNet(
     val id: Int?,
     val image: String?
 )
