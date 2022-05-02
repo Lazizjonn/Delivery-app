@@ -6,6 +6,7 @@ import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
+import uz.gita.maxwaydemo.data.sources.local.model.common.CategoryDataRV
 import uz.gita.maxwaydemo.data.sources.local.model.response.AdsDataFromNet
 import uz.gita.maxwaydemo.data.sources.local.model.response.CategoryDataFromNet
 import uz.gita.maxwaydemo.data.sources.local.model.response.FoodDataFromNet
@@ -18,12 +19,18 @@ class HomeViewModelImpl @Inject constructor(
     private val repository: AppRepository
 ) : HomeViewModel, ViewModel() {
     override val adsLiveData = MutableLiveData<List<AdsDataFromNet>>()
-    override val categoryLiveData = MutableLiveData<List<CategoryDataFromNet>>()
-    override val foodsLiveData = MutableLiveData<Pair<List<List<FoodDataFromNet>>, List<CategoryDataFromNet>>>()
+    override val categoryLiveData = MutableLiveData<List<CategoryDataRV>>()
+    override val foodsLiveData = MutableLiveData<List<FoodDataFromNet>>()
     override val foodsBySearchLiveData = MutableLiveData<List<FoodDataFromNet>>()
     override val errorLiveData = MutableLiveData<String>()
     override val openPickDetailFragmentLiveData = MutableLiveData<Unit>()
     override val openAdvertisementFragmentLiveData = MutableLiveData<Unit>()
+
+    init {
+        getAllAddsFromRepository()
+        getAllCategoriesFromRepository()
+        getAllFoodsFromRepository()
+    }
 
 
     override fun loadImagesFromFirebase(): ArrayList<Int> {
@@ -38,17 +45,26 @@ class HomeViewModelImpl @Inject constructor(
     }
 
     override fun getAllCategoriesFromRepository() {
-        repository.getAllCategoriesPhotosFromFirebase().onEach { it ->
-            it.onSuccess { categoryLiveData.value = it }
+        /*repository.getAllCategoriesPh().onEach { it ->
+            it.onSuccess {
+                categoryLiveData.value = it }
                 .onFailure { errorLiveData.value = it.message }
-        }.launchIn(viewModelScope)
+        }.launchIn(viewModelScope)*/
+
+        repository.getAllCategoriesForRV(viewModelScope).onEach {
+            it.onSuccess { it->
+                categoryLiveData.value = it  }
+                .onFailure { errorLiveData.value = it.message }
+        }
     }
 
     override fun getAllFoodsFromRepository() {
-//        repository.getAllFoodsPhotosFromFirebase().onEach { it ->
-//            it.onSuccess { foodsLiveData.value = it }
-//                .onFailure { errorLiveData.value = it.message }
-//        }.launchIn(viewModelScope)
+       /* repository.getAllFoodsPhotosFromFirebase().onEach { it ->
+            it.onSuccess {
+                foodsLiveData.value = it }
+                .onFailure {
+                    errorLiveData.value = it.message }
+        }.launchIn(viewModelScope)*/
     }
 
 
