@@ -10,7 +10,8 @@ import uz.gita.maxwaydemo.data.sources.local.model.common.AdPagerData
 import uz.gita.maxwaydemo.databinding.ItemAdLayoutBinding
 
 
-class AdLoopingPagerAdapter(val context: Context, val list: List<AdPagerData>, isInfinite: Boolean): LoopingPagerAdapter<AdPagerData>(list, isInfinite) {
+class AdLoopingPagerAdapter(val context: Context, val list: List<AdPagerData>, isInfinite: Boolean)
+    : LoopingPagerAdapter<AdPagerData>(list, isInfinite) {
 
 
     override fun bindView(convertView: View, listPosition: Int, viewType: Int){
