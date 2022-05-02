@@ -1,6 +1,7 @@
 package uz.gita.maxwaydemo.ui.screens
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.Fragment
@@ -33,15 +34,14 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     private val binding by viewBinding(FragmentHomeBinding::bind)
     private val viewModel: HomeViewModel by viewModels<HomeViewModelImpl>()
 
-    private val categoryList: MutableList<CategoryDataRV> = ArrayList()
     private val categoryListRV: MutableList<CategoryDataRV> = ArrayList()
     private val toolbarList: MutableList<ToolbarData> = ArrayList()
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        setAdViewPager()
         doubleRecycleView()
-        toolbarRecycleView()
+//        toolbarRecycleView()
+
 
         viewModel.adsLiveData.observe(viewLifecycleOwner, adsObserver)
         viewModel.categoryLiveData.observe(viewLifecycleOwner,categoryObserver)
@@ -53,9 +53,18 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
     }
 
-    private val adsObserver = Observer<List<AdsDataFromNet>> { }
-    private val categoryObserver = Observer<List<CategoryDataFromNet>> { }
-    private val foodsObserver = Observer<Pair<List<List<FoodDataFromNet>>, List<CategoryDataFromNet>>> { }
+    private val adsObserver = Observer<List<AdsDataFromNet>> {
+        Log.d("TAG", "adsList size: " + it.size)
+//        adsAdapter.setList(it)
+        binding.adViewPagerLayout.adapter = AdLoopingPagerAdapter(requireContext(), it, true)  // LoopingAdapter
+    }
+    private val categoryObserver = Observer<List<CategoryDataRV>> {
+        val categoryAdapter = CategoryAdapter(it)
+        binding.menuCollapsingToolbarRecyclerview.adapter = categoryAdapter
+        binding.menuCollapsingToolbarRecyclerview.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
+
+    }
+    private val foodsObserver = Observer<List<FoodDataFromNet>> { }
     private val foodsBySearchObserver = Observer<List<FoodDataFromNet>> { }
     private val errorObserver = Observer<String> { }
     private val openPickDetailFragmentObserver = Observer<Unit> { }
@@ -76,8 +85,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
             for (j in 0 until 9) {
                 list.add(FoodDataRV("Food name $i$j", images[j % 6], "Food cost $i*$j)", "Description$i*$j "))
             }
-            categoryList.add(CategoryDataRV("Food category $i", list))
-            categoryListRV.add(CategoryDataRV("Food category $i", list))
+            categoryListRV.add(CategoryDataRV(0,"Food category $i", list))
         }
     }
 
@@ -108,20 +116,11 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         }
     }
 
-    private fun setAdViewPager() {
-        val list = listOf(
-            AdPagerData(R.drawable.lavash_image, "1. Lavashga hush kelibsiz"),
-            AdPagerData(R.drawable.lavash_image, "2. Lavashga hush kelibsiz"),
-            AdPagerData(R.drawable.lavash_image, "3. Lavashga hush kelibsiz"),
-            AdPagerData(R.drawable.lavash_image, "4. Lavashga hush kelibsiz")
-        )
-
-        binding.adViewPagerLayout.adapter = AdPagerAdapter2(requireContext(), list)
-
-        binding.adViewPagerLayout.adapter = AdLoopingPagerAdapter(requireContext(), list, true)  // LoopingAdapter
-
-
-    }
+   /* private fun setAdViewPager() {
+        val list = listOf<AdsDataFromNet>()
+        adsAdapter = AdLoopingPagerAdapter(requireContext(), list, true)  // LoopingAdapter
+//        binding.adViewPagerLayout.adapter = adsAdapter
+    }*/
 
     override fun onResume() {
         binding.adViewPagerLayout.resumeAutoScroll()  // for AutoLoopingViewPager

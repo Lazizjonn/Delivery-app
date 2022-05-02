@@ -1,16 +1,17 @@
 package uz.gita.maxwaydemo.domain.repository.impl
 
+import androidx.lifecycle.viewModelScope
 import com.google.firebase.firestore.FirebaseFirestore
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.channels.onFailure
 import kotlinx.coroutines.channels.trySendBlocking
-import kotlinx.coroutines.flow.callbackFlow
-import kotlinx.coroutines.flow.channelFlow
-import kotlinx.coroutines.flow.flow
-import kotlinx.coroutines.flow.flowOn
+import kotlinx.coroutines.flow.*
 import retrofit2.Response
 import uz.gita.maxwaydemo.R
+import uz.gita.maxwaydemo.data.sources.local.model.common.CategoryDataRV
+import uz.gita.maxwaydemo.data.sources.local.model.common.FoodDataRV
 import uz.gita.maxwaydemo.data.sources.local.model.common.IntroData
 import uz.gita.maxwaydemo.data.sources.local.model.response.AdsDataFromNet
 import uz.gita.maxwaydemo.data.sources.local.model.response.CategoryDataFromNet
@@ -58,10 +59,10 @@ class AppRepositoryImpl @Inject constructor(
                  .addOnFailureListener {
                 trySendBlocking(Result.failure(it))
             }
-                  awaitClose {}
+        awaitClose {}
     }.flowOn(Dispatchers.IO)
 
-    override fun getAllCategoriesPhotosFromFirebase() = callbackFlow<Result<List<CategoryDataFromNet>>> {
+    private fun getAllCategoriesPhotosFromFirebase() = callbackFlow<Result<List<CategoryDataFromNet>>> {
         categories.get().addOnSuccessListener { querySnapshot ->
             val data = querySnapshot.map { queryDocumentSnapshot ->
                 queryDocumentSnapshot.toObject(CategoryDataFromNet::class.java)
@@ -73,7 +74,50 @@ class AppRepositoryImpl @Inject constructor(
                          awaitClose {}
     }.flowOn(Dispatchers.IO)
 
-    override fun getAllFoodsPhotosFromFirebase() = channelFlow<Result<List<FoodDataFromNet>>> {
+    override fun getAllCategoriesForRV(scope: CoroutineScope) = callbackFlow<Result<List<CategoryDataRV>>> {
+        val categoryList = ArrayList<CategoryDataFromNet>()
+        val foodsList = ArrayList<FoodDataFromNet>()
+
+        getAllCategoriesPhotosFromFirebase().onEach { it ->
+            it.onSuccess {
+                categoryList.addAll(it)
+            }
+                .onFailure {  //errorLiveData.value = it.message
+                }
+        }.launchIn(scope)
+
+        getAllFoodsPhotosFromFirebase().onEach { it ->
+            it.onSuccess {
+                foodsList.addAll(it)
+            }
+                .onFailure {  //errorLiveData.value = it.message
+                }
+        }.launchIn(scope)
+
+        val readyData = ArrayList<CategoryDataRV>()
+
+        for (i in 0..categoryList.size-1){
+            val readyFoods = ArrayList<FoodDataFromNet>()
+            for (foods in foodsList) {
+                if (categoryList[i].id == foods.categoryID) {
+                    readyFoods.add(foods)
+                }
+            }
+            readyData[i].list = readyFoods as List<FoodDataRV>
+            readyData[i].categoryName = categoryList[i].name
+            readyData[i].id = i
+        }
+
+        categories.get().addOnSuccessListener {
+            trySendBlocking(Result.success(readyData)).onFailure { trySendBlocking(Result.failure(java.lang.Exception(it))) } }
+            .addOnFailureListener {
+                    trySendBlocking(Result.failure(it)) }
+
+    awaitClose {}
+}.flowOn(Dispatchers.IO)
+
+
+    private fun getAllFoodsPhotosFromFirebase() = channelFlow<Result<List<FoodDataFromNet>>> {
         foodsRef.get().addOnSuccessListener { snapList ->
             val foodList = snapList.map { snapItem ->
                 snapItem.toObject(FoodDataFromNet::class.java)
