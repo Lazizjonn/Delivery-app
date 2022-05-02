@@ -28,6 +28,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     private val binding by viewBinding(FragmentHomeBinding::bind)
     private val viewModel: HomeViewModel by viewModels<HomeViewModelImpl>()
 
+    private val categoryList: MutableList<CategoryDataRV> = ArrayList()
     private val categoryListRV: MutableList<CategoryDataRV> = ArrayList()
     private val toolbarList: MutableList<ToolbarData> = ArrayList()
 
@@ -47,6 +48,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
             for (j in 0 until 9) {
                 list.add(FoodDataRV("Food name $i$j", images[j % 6], "Food cost $i*$j)", "Description$i*$j "))
             }
+            categoryList.add(CategoryDataRV("Food category $i", list))
             categoryListRV.add(CategoryDataRV("Food category $i", list))
         }
     }
@@ -87,10 +89,11 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         )
 
         binding.adViewPagerLayout.adapter = AdPagerAdapter2(requireContext(), list)
+
         binding.adViewPagerLayout.adapter = AdLoopingPagerAdapter(requireContext(), list, true)  // LoopingAdapter
 
-    }
 
+    }
 
     override fun onResume() {
         binding.adViewPagerLayout.resumeAutoScroll()  // for AutoLoopingViewPager
