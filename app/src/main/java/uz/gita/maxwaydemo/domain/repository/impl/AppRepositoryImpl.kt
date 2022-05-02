@@ -70,8 +70,4 @@ class AppRepositoryImpl @Inject constructor(
         TODO("Not yet implemented")
     }
 
-    override fun getAllShaurmaPhotosFromFirebase(): ArrayList<Int> {
-        TODO("Not yet implemented")
-    }
-
 }
