@@ -3,69 +3,99 @@ package uz.gita.maxwaydemo.ui.screens
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager.widget.ViewPager
 import by.kirich1409.viewbindingdelegate.viewBinding
+import com.bumptech.glide.Glide
+import com.google.android.gms.tasks.Tasks
+import com.google.firebase.ktx.Firebase
+import com.google.firebase.ktx.initialize
+import com.google.firebase.storage.ktx.storage
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.flowOn
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
+import timber.log.Timber
 import uz.gita.maxwaydemo.R
-import uz.gita.maxwaydemo.data.sources.local.common.AdPagerData
-import uz.gita.maxwaydemo.data.sources.model.response.CategoryData
-import uz.gita.maxwaydemo.data.sources.model.response.FoodData
+import uz.gita.maxwaydemo.data.sources.local.model.common.AdPagerData
+import uz.gita.maxwaydemo.data.sources.local.model.common.ToolbarData
+import uz.gita.maxwaydemo.data.sources.local.model.response.CategoryData
+import uz.gita.maxwaydemo.data.sources.local.model.response.FoodData
 import uz.gita.maxwaydemo.databinding.FragmentHomeBinding
+import uz.gita.maxwaydemo.presentation.viewmodel.HomeViewModel
+import uz.gita.maxwaydemo.presentation.viewmodel.IntroViewModel
+import uz.gita.maxwaydemo.presentation.viewmodel.impl.HomeViewModelImpl
+import uz.gita.maxwaydemo.presentation.viewmodel.impl.IntroViewModelImpl
 import uz.gita.maxwaydemo.ui.adapter.AdLoopingPagerAdapter
 import uz.gita.maxwaydemo.ui.adapter.AdPagerAdapter2
 import uz.gita.maxwaydemo.ui.adapter.CategoryAdapter
+import uz.gita.maxwaydemo.ui.adapter.CollapsingToolbarAdapter
+import java.io.File
 
 @AndroidEntryPoint
 class HomeFragment : Fragment(R.layout.fragment_home) {
     private val binding by viewBinding(FragmentHomeBinding::bind)
-    private val images = ArrayList<Int>()
+    private val viewModel: HomeViewModel by viewModels<HomeViewModelImpl>()
+
     private val categoryList: MutableList<CategoryData> = ArrayList()
+    private val toolbarList: MutableList<ToolbarData> = ArrayList()
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         setAdViewPager()
-
-        loadImages()
-        loadData()
-
-
-        val adapter = CategoryAdapter(categoryList)
-
-        adapter.setClickCategoryNameListener {
-            Toast.makeText(requireContext(), categoryList[it].categoryName, Toast.LENGTH_SHORT).show()
-        }
-
-        adapter.setFoodClickListener { foodName, foodPhoto, foodDescription ->
-            findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToPickDetailFragment(foodName, foodPhoto, foodDescription))
-        }
-
-        binding.categoryRecyclerviewSelf.adapter = adapter
-        binding.categoryRecyclerviewSelf.layoutManager = LinearLayoutManager(requireContext())
+        doubleRecycleView()
+        toolbarRecycleView()
     }
 
-    private fun loadImages() {
-        images.add(R.drawable.group_1)
-        images.add(R.drawable.group_2)
-        images.add(R.drawable.group_3)
-        images.add(R.drawable.group_4)
-        images.add(R.drawable.group_1)
-        images.add(R.drawable.group_2)
-    }
 
-    private fun loadData() {
+
+    private fun loadDataForDoubleRecycleView() {
+        val images = viewModel.loadImagesFromFirebase()
         for (i in 0 until 5) {
             val list = ArrayList<FoodData>()
             for (j in 0 until 9) {
                 list.add(FoodData("Food name $i$j", images[j % 6], "Food cost $i*$j)", "Description$i*$j "))
             }
             categoryList.add(CategoryData("Food category $i", list))
+        }
+    }
+
+    private fun doubleRecycleView() {
+        loadDataForDoubleRecycleView()
+        val adapter = CategoryAdapter(categoryList)
+        adapter.setClickCategoryNameListener {
+            Toast.makeText(requireContext(), categoryList[it].categoryName, Toast.LENGTH_SHORT).show()
+        }
+        adapter.setFoodClickListener { foodName, foodPhoto, foodDescription ->
+            findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToPickDetailFragment(foodName, foodPhoto, foodDescription))
+        }
+        binding.categoryRecyclerviewSelf.adapter = adapter
+        binding.categoryRecyclerviewSelf.layoutManager = LinearLayoutManager(requireContext())
+    }
+
+    private fun toolbarRecycleView() {
+        loadDataForToolbarRecycleView()
+        val adapter = CollapsingToolbarAdapter(toolbarList)
+        binding.menuCollapsingToolbarRecyclerview.adapter = adapter
+        binding.menuCollapsingToolbarRecyclerview.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
+    }
+
+    private fun loadDataForToolbarRecycleView() {
+        val images = viewModel.loadImagesFromFirebase()
+        for (i in 0 until 10) {
+            toolbarList.add(ToolbarData(images[i % 6], "ToolbarName $i"))
         }
     }
 
@@ -113,7 +143,6 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
             }
         }
     }
-
 
     override fun onResume() {
         binding.adViewPagerLayout.resumeAutoScroll()  // for AutoLoopingViewPager

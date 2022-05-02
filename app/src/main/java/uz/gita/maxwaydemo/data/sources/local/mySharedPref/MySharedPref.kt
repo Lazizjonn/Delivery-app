@@ -1,4 +1,4 @@
-package uz.gita.maxwaydemo.data.sources.local
+package uz.gita.maxwaydemo.data.sources.local.mySharedPref
 
 import android.content.Context
 import dagger.hilt.android.qualifiers.ApplicationContext

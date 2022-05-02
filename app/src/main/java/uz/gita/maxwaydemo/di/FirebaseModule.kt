@@ -3,6 +3,7 @@ package uz.gita.maxwaydemo.di
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ktx.database
+import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
 import dagger.Module
 import dagger.Provides
@@ -14,7 +15,7 @@ import javax.inject.Singleton
 class FirebaseModule {
 
     @[Provides Singleton]
-    fun getRealTimeDataBase(): FirebaseDatabase = Firebase.database
+    fun getRealTimeDataBase(): FirebaseFirestore = FirebaseFirestore.getInstance()
 
     @[Provides Singleton]
     fun getDeliveryReference(database: FirebaseDatabase): DatabaseReference = database.getReference("delivery")

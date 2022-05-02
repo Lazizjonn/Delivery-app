@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import uz.gita.maxwaydemo.R
-import uz.gita.maxwaydemo.data.sources.model.response.CategoryData
+import uz.gita.maxwaydemo.data.sources.local.model.response.CategoryData
 import uz.gita.maxwaydemo.databinding.ItemOutherBinding
 
 class CategoryAdapter(private val list: List<CategoryData>) : RecyclerView.Adapter<CategoryAdapter.CategoryViewHolder>() {

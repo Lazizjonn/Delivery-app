@@ -1,4 +1,4 @@
-package uz.gita.maxwaydemo.data.sources.local.common
+package uz.gita.maxwaydemo.data.sources.local.model.common
 
 import androidx.annotation.DrawableRes
 

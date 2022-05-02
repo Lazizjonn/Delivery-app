@@ -11,7 +11,6 @@ import by.kirich1409.viewbindingdelegate.viewBinding
 import com.google.android.material.tabs.TabLayoutMediator
 import dagger.hilt.android.AndroidEntryPoint
 import uz.gita.maxwaydemo.R
-import uz.gita.maxwaydemo.data.sources.local.common.IntroData
 import uz.gita.maxwaydemo.databinding.FragmentIntroBinding
 import uz.gita.maxwaydemo.presentation.viewmodel.IntroViewModel
 import uz.gita.maxwaydemo.presentation.viewmodel.impl.IntroViewModelImpl
@@ -26,7 +25,7 @@ class IntroFragment : Fragment(R.layout.fragment_intro) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) = with(binding) {
         adapter = IntroAdapter()
-        adapter.submitList(viewModel.setData())
+        adapter.submitList(viewModel.setDataForIntroFragment())
         introViewPager.adapter = adapter
         TabLayoutMediator(introTabLayout, introViewPager) { tab, position -> }.attach()
 

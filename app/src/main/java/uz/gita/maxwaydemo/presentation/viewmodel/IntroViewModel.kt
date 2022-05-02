@@ -1,7 +1,7 @@
 package uz.gita.maxwaydemo.presentation.viewmodel
 
 import androidx.lifecycle.LiveData
-import uz.gita.maxwaydemo.data.sources.local.common.IntroData
+import uz.gita.maxwaydemo.data.sources.local.model.common.IntroData
 
 interface IntroViewModel {
 
@@ -9,6 +9,6 @@ interface IntroViewModel {
 
     fun clickedEnterOrSkip ()
 
-    fun setData(): MutableList<IntroData>
+    fun setDataForIntroFragment(): MutableList<IntroData>
 
 }

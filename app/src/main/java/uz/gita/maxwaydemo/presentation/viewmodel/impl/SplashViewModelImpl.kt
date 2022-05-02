@@ -6,7 +6,7 @@ import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-import uz.gita.maxwaydemo.data.sources.local.MySharedPref
+import uz.gita.maxwaydemo.data.sources.local.mySharedPref.MySharedPref
 import uz.gita.maxwaydemo.presentation.viewmodel.SplashViewModel
 import javax.inject.Inject
 
