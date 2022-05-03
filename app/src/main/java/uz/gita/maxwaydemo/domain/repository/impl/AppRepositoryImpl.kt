@@ -1,14 +1,17 @@
 package uz.gita.maxwaydemo.domain.repository.impl
 
-import androidx.lifecycle.viewModelScope
+import android.util.Log
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.channels.onFailure
 import kotlinx.coroutines.channels.trySendBlocking
-import kotlinx.coroutines.flow.*
-import retrofit2.Response
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.callbackFlow
+import kotlinx.coroutines.flow.flowOn
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
 import uz.gita.maxwaydemo.R
 import uz.gita.maxwaydemo.data.sources.local.model.common.CategoryDataRV
 import uz.gita.maxwaydemo.data.sources.local.model.common.FoodDataRV
@@ -19,13 +22,14 @@ import uz.gita.maxwaydemo.data.sources.local.model.response.FoodDataFromNet
 import uz.gita.maxwaydemo.domain.repository.AppRepository
 import javax.inject.Inject
 
+@Suppress("UNCHECKED_CAST")
 class AppRepositoryImpl @Inject constructor(
     private val firestore: FirebaseFirestore
 ) : AppRepository {
 
     private val ads = firestore.collection("ads")
     private val categories = firestore.collection("category")
-    private val foodsRef = firestore.collection("foods")
+    private val foods = firestore.collection("foods")
 
 
     override fun setDataForIntroFragment(): MutableList<IntroData> {
@@ -56,7 +60,7 @@ class AppRepositoryImpl @Inject constructor(
             }
             trySendBlocking(Result.success(data)).onFailure { trySendBlocking(Result.failure(Exception(it))) }
         }
-                 .addOnFailureListener {
+            .addOnFailureListener {
                 trySendBlocking(Result.failure(it))
             }
         awaitClose {}
@@ -67,11 +71,32 @@ class AppRepositoryImpl @Inject constructor(
             val data = querySnapshot.map { queryDocumentSnapshot ->
                 queryDocumentSnapshot.toObject(CategoryDataFromNet::class.java)
             }
-            trySendBlocking(Result.success(data)).onFailure { trySendBlocking(Result.failure(java.lang.Exception(it))) }
+            trySendBlocking(Result.success(data))
+                .onFailure {
+                    trySendBlocking(Result.failure(Exception(it)))
+                }
+            Log.d("TTT", "getting from internet categories size: " + data.size)
         }
-                        .addOnFailureListener {
-                            trySendBlocking(Result.failure(it)) }
-                         awaitClose {}
+            .addOnFailureListener {
+                trySendBlocking(Result.failure(it))
+            }
+        awaitClose {}
+    }.flowOn(Dispatchers.IO)
+
+    private fun getAllFoodsPhotosFromFirebase() = callbackFlow<Result<List<FoodDataFromNet>>> {
+        foods.get().addOnSuccessListener { querySnapshot ->
+            val data = querySnapshot.map { queryDocumentSnapshot ->
+                queryDocumentSnapshot.toObject(FoodDataFromNet::class.java)
+            }
+            trySendBlocking(Result.success(data)
+                .onFailure { trySendBlocking(Result.failure(Exception(it))) })
+            Log.d("TTT", "getting from internet foods size: " + data.size)
+        }
+
+        foods.get().addOnFailureListener {
+            trySendBlocking(Result.failure(it))
+        }
+        awaitClose { }
     }.flowOn(Dispatchers.IO)
 
     override fun getAllCategoriesForRV(scope: CoroutineScope) = callbackFlow<Result<List<CategoryDataRV>>> {
@@ -80,76 +105,73 @@ class AppRepositoryImpl @Inject constructor(
 
         getAllCategoriesPhotosFromFirebase().onEach { it ->
             it.onSuccess {
+                Log.d("TTT", "categoryni olish " + it.size)
                 categoryList.addAll(it)
             }
                 .onFailure {  //errorLiveData.value = it.message
+                    Log.d("TTT", "failure: ")
                 }
         }.launchIn(scope)
 
         getAllFoodsPhotosFromFirebase().onEach { it ->
             it.onSuccess {
+                Log.d("TTT", "foodni olish " + it.size)
                 foodsList.addAll(it)
             }
                 .onFailure {  //errorLiveData.value = it.message
                 }
         }.launchIn(scope)
 
+        delay(2000)
         val readyData = ArrayList<CategoryDataRV>()
 
-        for (i in 0..categoryList.size-1){
-            val readyFoods = ArrayList<FoodDataFromNet>()
+        Log.d("TTT", "for boshlanyati ")
+        for (i in 0 until categoryList.size) {
+            Log.d("TTT", "for boshlandii $i")
+            val readyFoods = ArrayList<FoodDataRV>()
             for (foods in foodsList) {
+                Log.d("TTT", "for boshlandii ${foods.id}")
                 if (categoryList[i].id == foods.categoryID) {
-                    readyFoods.add(foods)
+                    readyFoods.add(FoodDataRV(foods.name!!, foods.image!!, foods.cost!!, foods.description!!))
                 }
             }
-            readyData[i].list = readyFoods as List<FoodDataRV>
-            readyData[i].categoryName = categoryList[i].name
-            readyData[i].id = i
+            readyData.add(CategoryDataRV(i,categoryList[i].name!!, readyFoods))
+
+            /*readyData[i].list = readyFoods as List<FoodDataRV>
+            readyData[i].categoryName = categoryList[i].name!!
+            Log.d("TTT", "getAllCategoriesForRV: " + categoryList[i].name)
+            readyData[i].id = i*/
         }
 
         categories.get().addOnSuccessListener {
-            trySendBlocking(Result.success(readyData)).onFailure { trySendBlocking(Result.failure(java.lang.Exception(it))) } }
+            trySendBlocking(Result.success(readyData)).onFailure { trySendBlocking(Result.failure(java.lang.Exception(it))) }
+        }
             .addOnFailureListener {
-                    trySendBlocking(Result.failure(it)) }
-
-    awaitClose {}
-}.flowOn(Dispatchers.IO)
-
-
-    private fun getAllFoodsPhotosFromFirebase() = channelFlow<Result<List<FoodDataFromNet>>> {
-        foodsRef.get().addOnSuccessListener { snapList ->
-            val foodList = snapList.map { snapItem ->
-                snapItem.toObject(FoodDataFromNet::class.java)
+                trySendBlocking(Result.failure(it))
             }
-            trySendBlocking(Result.success(foodList)
-                .onFailure { trySendBlocking(Result.failure(java.lang.Exception(it))) })
-        }
 
-        foodsRef.get().addOnFailureListener {
-            trySendBlocking(Result.failure(java.lang.Exception(it)))
-        }
-        awaitClose { }
+        awaitClose {}
     }.flowOn(Dispatchers.IO)
 
-       /* foodsRef.addSnapshotListener { querySnapshot,exception ->
-            if (exception == null){
-//                emit(Result.failure<Exception>(exception!!))
-                return@addSnapshotListener
-            }
 
-            if (querySnapshot != null){
-                for(item in querySnapshot ){
-                var food = item.toObject(FoodDataFromNet::class.java)
-                    if (!mFoodList.contains(food)){
-                        mFoodList.add(food)
-                    }
-                }
-                suspend {
-                    emit(Result.success(mFoodList))
-                }
-            }
-        }*/
+    /* foods.addSnapshotListener { querySnapshot,exception ->
+         if (exception == null){
+//                emit(Result.failure<Exception>(exception!!))
+             return@addSnapshotListener
+         }
+
+         if (querySnapshot != null){
+             for(item in querySnapshot ){
+             var food = item.toObject(FoodDataFromNet::class.java)
+                 if (!mFoodList.contains(food)){
+                     mFoodList.add(food)
+                 }
+             }
+             suspend {
+                 emit(Result.success(mFoodList))
+             }
+         }
+     }*/
 
 
 }

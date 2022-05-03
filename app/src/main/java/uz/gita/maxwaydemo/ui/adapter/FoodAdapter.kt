@@ -4,13 +4,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import uz.gita.maxwaydemo.R
 import uz.gita.maxwaydemo.data.sources.local.model.common.FoodDataRV
 import uz.gita.maxwaydemo.databinding.ItemInnerBinding
 
 class FoodAdapter(private val list: List<FoodDataRV>) : RecyclerView.Adapter<FoodAdapter.FoodViewHolder>() {
 
-    private var foodClickListener: ((String, Int, String) -> Unit)? = null
+    private var foodClickListener: ((String, String, String) -> Unit)? = null
 
     inner class FoodViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         private val binding = ItemInnerBinding.bind(view)
@@ -28,8 +29,10 @@ class FoodAdapter(private val list: List<FoodDataRV>) : RecyclerView.Adapter<Foo
         fun bind() {
             list[absoluteAdapterPosition].apply {
                 binding.foodNameUI.text = foodName
-                binding.foodPhotoUI.setImageResource(foodPhoto)
-                binding.foodCostUI.text = foodCost
+                Glide.with(binding.foodPhotoUI)
+                    .load(foodPhoto).into(binding.foodPhotoUI)
+
+                binding.foodCostUI.text = foodCost.toString()
             }
         }
     }
@@ -40,7 +43,7 @@ class FoodAdapter(private val list: List<FoodDataRV>) : RecyclerView.Adapter<Foo
     override fun onBindViewHolder(holder: FoodViewHolder, position: Int) = holder.bind()
     override fun getItemCount(): Int = list.size
 
-    fun setFoodClickListener(block: (String, Int, String) -> Unit) {
+    fun setFoodClickListener(block: (String, String, String) -> Unit) {
         foodClickListener = block
     }
 

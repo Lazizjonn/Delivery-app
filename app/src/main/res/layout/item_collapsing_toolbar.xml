@@ -1,36 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="wrap_content"
     android:id="@+id/menu_collapsing_toolbar_cardView"
+    android:layout_width="wrap_content"
     android:layout_height="35dp"
     app:cardCornerRadius="10dp"
     app:cardElevation="10dp">
 
-    <androidx.appcompat.widget.LinearLayoutCompat
+    <TextView
+        android:id="@+id/menu_collapsing_toolbar_text"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/menu_collapsing_toolbar_image"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:paddingTop="5dp"
-            android:paddingBottom="5dp"
-            app:srcCompat="@drawable/lavash_image" />
-
-        <TextView
-            android:id="@+id/menu_collapsing_toolbar_text"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center_vertical"
-            android:paddingStart="5dp"
-            android:paddingEnd="5dp"
-            android:text="Lavash"
-            android:textSize="22sp" />
-
-
-    </androidx.appcompat.widget.LinearLayoutCompat>
-
+        android:layout_height="match_parent"
+        android:gravity="center_vertical"
+        android:paddingStart="5dp"
+        android:paddingEnd="5dp"
+        android:text="Lavash"
+        android:textSize="22sp" />
 
 </androidx.cardview.widget.CardView>

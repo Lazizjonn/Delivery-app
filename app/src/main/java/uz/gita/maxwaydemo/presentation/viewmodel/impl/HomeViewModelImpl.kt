@@ -29,7 +29,7 @@ class HomeViewModelImpl @Inject constructor(
     init {
         getAllAddsFromRepository()
         getAllCategoriesFromRepository()
-        getAllFoodsFromRepository()
+//        getAllFoodsFromRepository()
     }
 
 
@@ -45,17 +45,11 @@ class HomeViewModelImpl @Inject constructor(
     }
 
     override fun getAllCategoriesFromRepository() {
-        /*repository.getAllCategoriesPh().onEach { it ->
+        repository.getAllCategoriesForRV(viewModelScope).onEach { it ->
             it.onSuccess {
                 categoryLiveData.value = it }
                 .onFailure { errorLiveData.value = it.message }
-        }.launchIn(viewModelScope)*/
-
-        repository.getAllCategoriesForRV(viewModelScope).onEach {
-            it.onSuccess { it->
-                categoryLiveData.value = it  }
-                .onFailure { errorLiveData.value = it.message }
-        }
+        }.launchIn(viewModelScope)
     }
 
     override fun getAllFoodsFromRepository() {

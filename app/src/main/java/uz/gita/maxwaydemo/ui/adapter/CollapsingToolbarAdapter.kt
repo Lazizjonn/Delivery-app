@@ -6,10 +6,11 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import uz.gita.maxwaydemo.R
+import uz.gita.maxwaydemo.data.sources.local.model.common.CategoryDataRV
 import uz.gita.maxwaydemo.data.sources.local.model.common.ToolbarData
 import uz.gita.maxwaydemo.databinding.ItemCollapsingToolbarBinding
 
-class CollapsingToolbarAdapter(private val list: List<ToolbarData>) : RecyclerView.Adapter<CollapsingToolbarAdapter.CollapsingToolbarViewHolder>() {
+class CollapsingToolbarAdapter(private val list: List<CategoryDataRV>) : RecyclerView.Adapter<CollapsingToolbarAdapter.CollapsingToolbarViewHolder>() {
 
     inner class CollapsingToolbarViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         private val binding = ItemCollapsingToolbarBinding.bind(view)
@@ -22,8 +23,7 @@ class CollapsingToolbarAdapter(private val list: List<ToolbarData>) : RecyclerVi
 
         fun bind() {
             list[absoluteAdapterPosition].apply {
-                binding.menuCollapsingToolbarText.text = toolbarName
-                binding.menuCollapsingToolbarImage.setImageResource(toolbarImage)
+                binding.menuCollapsingToolbarText.text = categoryName
             }
         }
 

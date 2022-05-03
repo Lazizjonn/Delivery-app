@@ -39,7 +39,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        doubleRecycleView()
+//        doubleRecycleView()
 //        toolbarRecycleView()
 
 
@@ -58,10 +58,27 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 //        adsAdapter.setList(it)
         binding.adViewPagerLayout.adapter = AdLoopingPagerAdapter(requireContext(), it, true)  // LoopingAdapter
     }
+
     private val categoryObserver = Observer<List<CategoryDataRV>> {
-        val categoryAdapter = CategoryAdapter(it)
-        binding.menuCollapsingToolbarRecyclerview.adapter = categoryAdapter
+        // CollapsingAdapter
+        val adapter = CollapsingToolbarAdapter(it)
+        binding.menuCollapsingToolbarRecyclerview.adapter = adapter
         binding.menuCollapsingToolbarRecyclerview.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
+
+
+        // CategoryAdapter
+        val adapterList = CategoryAdapter(it)
+        adapterList.setClickCategoryNameListener {
+            Toast.makeText(requireContext(), categoryListRV[it].categoryName, Toast.LENGTH_SHORT).show()
+        }
+        adapterList.setFoodClickListener { foodName, foodPhoto, foodDescription ->
+            findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToPickDetailFragment(foodName, foodPhoto, foodDescription))
+        }
+        binding.categoryRecyclerviewSelf.adapter = adapterList
+        binding.categoryRecyclerviewSelf.layoutManager = LinearLayoutManager(requireContext())
+
+
+
 
     }
     private val foodsObserver = Observer<List<FoodDataFromNet>> { }
@@ -69,6 +86,13 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     private val errorObserver = Observer<String> { }
     private val openPickDetailFragmentObserver = Observer<Unit> { }
     private val openAdvertisementFragmentObserver = Observer<Unit> { }
+
+/*    private fun toolbarRecycleView() {
+        loadDataForToolbarRecycleView()
+        val adapter = CollapsingToolbarAdapter(toolbarList)
+        binding.menuCollapsingToolbarRecyclerview.adapter = adapter
+        binding.menuCollapsingToolbarRecyclerview.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
+    }*/
 
 
 
@@ -83,7 +107,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         for (i in 0 until 5) {
             val list = ArrayList<FoodDataRV>()
             for (j in 0 until 9) {
-                list.add(FoodDataRV("Food name $i$j", images[j % 6], "Food cost $i*$j)", "Description$i*$j "))
+//                list.add(FoodDataRV("Food name $i$j", images[j % 6], "Food cost $i*$j)", "Description$i*$j "))
             }
             categoryListRV.add(CategoryDataRV(0,"Food category $i", list))
         }
@@ -100,13 +124,6 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         }
         binding.categoryRecyclerviewSelf.adapter = adapter
         binding.categoryRecyclerviewSelf.layoutManager = LinearLayoutManager(requireContext())
-    }
-
-    private fun toolbarRecycleView() {
-        loadDataForToolbarRecycleView()
-        val adapter = CollapsingToolbarAdapter(toolbarList)
-        binding.menuCollapsingToolbarRecyclerview.adapter = adapter
-        binding.menuCollapsingToolbarRecyclerview.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
     }
 
     private fun loadDataForToolbarRecycleView() {
