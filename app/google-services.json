@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "664786324215",
-    "project_id": "max-way-clone",
-    "storage_bucket": "max-way-clone.appspot.com"
+    "project_number": "615645183386",
+    "project_id": "mymaxway-f124d",
+    "storage_bucket": "mymaxway-f124d.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:664786324215:android:2143a19875345b19d461f2",
+        "mobilesdk_app_id": "1:615645183386:android:5d5e60de8e916916da8e23",
         "android_client_info": {
           "package_name": "uz.gita.maxwaydemo"
         }
       },
       "oauth_client": [
         {
-          "client_id": "664786324215-vas8v1iuiivi2ae4hr503m5ntpfmtgg2.apps.googleusercontent.com",
+          "client_id": "615645183386-8o6qc5cadf7jod8e55m004o1j72cfmkq.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDM1fNiq8OtWLPHHbLdj0cTYXpkAGAvPpQ"
+          "current_key": "AIzaSyAxrz4qEbkxEWqMJ8b3UmcQbnLTYitqZIg"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "664786324215-vas8v1iuiivi2ae4hr503m5ntpfmtgg2.apps.googleusercontent.com",
+              "client_id": "615645183386-8o6qc5cadf7jod8e55m004o1j72cfmkq.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

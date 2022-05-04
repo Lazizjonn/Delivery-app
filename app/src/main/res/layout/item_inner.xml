@@ -11,6 +11,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/reg_edit"
         android:padding="8dp">
 
         <TextView
@@ -30,21 +31,21 @@
             android:id="@+id/foodPhotoUI"
             android:layout_width="match_parent"
             android:layout_height="120dp"
-            android:src="@drawable/lavash_image"
-            android:scaleType="centerCrop"
             android:layout_marginBottom="4dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/lavash_image"
             app:layout_constraintBottom_toTopOf="@id/foodCostUI"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/foodNameUI"/>
+            app:layout_constraintTop_toBottomOf="@id/foodNameUI" />
 
         <TextView
             android:id="@+id/foodCostUI"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="23000 euros"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/foodPhotoUI"
             app:layout_constraintRight_toRightOf="parent"
-            android:text="23000 euros"/>
+            app:layout_constraintTop_toBottomOf="@id/foodPhotoUI" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.cardview.widget.CardView>
