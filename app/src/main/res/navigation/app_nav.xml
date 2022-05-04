@@ -57,5 +57,19 @@
             android:name="foodDescription"
             app:argType="string" />
     </fragment>
+    <fragment
+        android:id="@+id/registerNameFragment"
+        android:name="uz.gita.maxwaydemo.ui.screens.RegisterFragment"
+        android:label="fragment_register_name"
+        tools:layout="@layout/fragment_register" >
+        <action
+            android:id="@+id/action_registerNameFragment_to_verifyFragment"
+            app:destination="@id/verifyFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/verifyFragment"
+        android:name="uz.gita.maxwaydemo.ui.screens.VerifyFragment"
+        android:label="fragment_verify"
+        tools:layout="@layout/fragment_verify" />
 
 </navigation>
