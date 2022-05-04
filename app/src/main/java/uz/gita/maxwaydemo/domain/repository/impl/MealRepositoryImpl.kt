@@ -19,13 +19,13 @@ import uz.gita.maxwaydemo.data.sources.local.model.common.IntroData
 import uz.gita.maxwaydemo.data.sources.local.model.response.AdsDataFromNet
 import uz.gita.maxwaydemo.data.sources.local.model.response.CategoryDataFromNet
 import uz.gita.maxwaydemo.data.sources.local.model.response.FoodDataFromNet
-import uz.gita.maxwaydemo.domain.repository.AppRepository
+import uz.gita.maxwaydemo.domain.repository.MealRepository
 import javax.inject.Inject
 
 @Suppress("UNCHECKED_CAST")
-class AppRepositoryImpl @Inject constructor(
+class MealRepositoryImpl @Inject constructor(
     private val firestore: FirebaseFirestore
-) : AppRepository {
+) : MealRepository {
 
     private val ads = firestore.collection("ads")
     private val categories = firestore.collection("category")

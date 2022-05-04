@@ -8,15 +8,14 @@ import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import uz.gita.maxwaydemo.data.sources.local.model.common.CategoryDataRV
 import uz.gita.maxwaydemo.data.sources.local.model.response.AdsDataFromNet
-import uz.gita.maxwaydemo.data.sources.local.model.response.CategoryDataFromNet
 import uz.gita.maxwaydemo.data.sources.local.model.response.FoodDataFromNet
-import uz.gita.maxwaydemo.domain.repository.AppRepository
+import uz.gita.maxwaydemo.domain.repository.MealRepository
 import uz.gita.maxwaydemo.presentation.viewmodel.HomeViewModel
 import javax.inject.Inject
 
 @HiltViewModel
 class HomeViewModelImpl @Inject constructor(
-    private val repository: AppRepository
+    private val repository: MealRepository
 ) : HomeViewModel, ViewModel() {
     override val adsLiveData = MutableLiveData<List<AdsDataFromNet>>()
     override val categoryLiveData = MutableLiveData<List<CategoryDataRV>>()

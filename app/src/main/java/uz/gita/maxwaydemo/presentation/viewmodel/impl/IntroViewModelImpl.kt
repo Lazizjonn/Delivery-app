@@ -5,13 +5,13 @@ import androidx.lifecycle.ViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import uz.gita.maxwaydemo.data.sources.local.mySharedPref.MySharedPref
 import uz.gita.maxwaydemo.data.sources.local.model.common.IntroData
-import uz.gita.maxwaydemo.domain.repository.AppRepository
+import uz.gita.maxwaydemo.domain.repository.MealRepository
 import uz.gita.maxwaydemo.presentation.viewmodel.IntroViewModel
 import javax.inject.Inject
 
 @HiltViewModel
 class IntroViewModelImpl @Inject constructor(
-    private val repository: AppRepository,
+    private val repository: MealRepository,
     private val pref: MySharedPref
 ) : ViewModel(), IntroViewModel {
 
