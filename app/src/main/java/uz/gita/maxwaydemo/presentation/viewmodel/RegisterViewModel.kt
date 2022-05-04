@@ -1,4 +1,4 @@
 package uz.gita.maxwaydemo.presentation.viewmodel
 
-interface RegisterPhoneViewModel {
+interface RegisterViewModel {
 }

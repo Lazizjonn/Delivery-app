@@ -9,7 +9,7 @@ import uz.gita.maxwaydemo.data.sources.local.model.response.AdsDataFromNet
 import uz.gita.maxwaydemo.data.sources.local.model.response.CategoryDataFromNet
 import uz.gita.maxwaydemo.data.sources.local.model.response.FoodDataFromNet
 
-interface AppRepository {
+interface MealRepository {
 
     fun setDataForIntroFragment(): MutableList<IntroData>
 
