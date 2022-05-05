@@ -6,6 +6,7 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.FirebaseException
@@ -26,24 +27,24 @@ class RegisterPhoneFragment : Fragment(R.layout.fragment_register_phone) {
     private val viewModel by viewModels<RegisterPhoneViewModelImpl>()
     var phone = ""
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?): Unit = with(binding){
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
+        clicks()
+        liveDatas()
+    }
+
+    private fun clicks() = with(binding){
         regProceed.setOnClickListener {
-            if (App.userData.name == null) {  // tekshirish
-                regPhone.text?.let {
-                    if (it.equals("") || it.length == 9) {
+            // Authni tekshirish
+            regPhone.text?.let {
+                if (it.equals("") || it.length == 9) {
 //                        viewModel.regPhoneRequest(requireActivity(), "+998" + it.toString())
-                        registerFun("+998"+ it.toString())
-                    } else {
-                        Snackbar.make(requireView(), "Enter 13 digit number", Snackbar.LENGTH_SHORT)
-                            .show()
-                    }
+                    registerFun("+393"+ it.toString())
+                } else {
+                    Snackbar.make(requireView(), "Enter 13 digit number", Snackbar.LENGTH_SHORT).show()
                 }
             }
         }
-
-
-        liveDatas()
     }
 
     private fun registerFun(phone: String) {
@@ -78,7 +79,7 @@ class RegisterPhoneFragment : Fragment(R.layout.fragment_register_phone) {
             super.onCodeSent(code, token)
             // return code and token
             Log.d("TAG", "codeListener: " + code)
-//            findNavController().navigate(RegisterPhoneFragmentDirections.actionRegisterPhoneFragmentToRegisterNameFragment(phone, CodeTokenData(code, token)))
+            findNavController().navigate(RegisterPhoneFragmentDirections.actionRegisterPhoneFragmentToRegisterNameFragment(phone, CodeTokenData(code, token)))
 
         }
     }

@@ -12,7 +12,10 @@
         android:layout_width="match_parent"
         android:layout_height="?android:actionBarSize"
         android:background="@color/white"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/pinEditText"
+        android:layout_marginBottom="25dp"
+        >
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -43,77 +46,110 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <EditText
-        android:id="@+id/reg_verify_1"
-        style="@style/sixCodeStyle"
-        android:layout_marginHorizontal="10dp"
-        android:autofillHints="phone"
-        app:layout_constraintBottom_toTopOf="@id/reg_proceed"
-        app:layout_constraintEnd_toStartOf="@+id/reg_verify_2"
-        app:layout_constraintHorizontal_bias="0.5"
+
+    <com.chaos.view.PinView
+        android:id="@+id/pinEditText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:itemCount="6"
+        android:layout_margin="30dp"
+        android:textColor="@color/black"
+        app:itemHeight="48dp"
+        app:itemRadius="6dp"
+        android:itemBackground="@color/white"
+        app:lineColor="@color/maxColor"
+        app:itemSpacing="9dp"
+        android:textSize="18sp"
+        android:focusable="true"
+        app:cursorColor="#FFA35400"
+        android:inputType="number"
+        style="@style/PinWidget.PinView"
+        android:cursorVisible="true"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/register_app_bar"
-        tools:ignore="LabelFor" />
-
-    <EditText
-        android:id="@+id/reg_verify_2"
-        style="@style/sixCodeStyle"
-        android:layout_marginHorizontal="10dp"
-        android:autofillHints="phone"
-        app:layout_constraintBottom_toTopOf="@id/reg_proceed"
-        app:layout_constraintEnd_toStartOf="@+id/reg_verify_3"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/reg_verify_1"
-        app:layout_constraintTop_toBottomOf="@id/register_app_bar"
-        tools:ignore="LabelFor" />
-
-    <EditText
-        android:id="@+id/reg_verify_3"
-        style="@style/sixCodeStyle"
-        android:layout_marginHorizontal="10dp"
-        android:autofillHints="phone"
-        app:layout_constraintBottom_toTopOf="@id/reg_proceed"
-        app:layout_constraintEnd_toStartOf="@+id/reg_verify_4"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/reg_verify_2"
-        app:layout_constraintTop_toBottomOf="@id/register_app_bar"
-        tools:ignore="LabelFor" />
-
-    <EditText
-        android:id="@+id/reg_verify_4"
-        style="@style/sixCodeStyle"
-        android:layout_marginHorizontal="10dp"
-        android:autofillHints="phone"
-        app:layout_constraintBottom_toTopOf="@id/reg_proceed"
-        app:layout_constraintEnd_toStartOf="@+id/reg_verify_5"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/reg_verify_3"
-        app:layout_constraintTop_toBottomOf="@id/register_app_bar"
-        tools:ignore="LabelFor" />
-
-    <EditText
-        android:id="@+id/reg_verify_5"
-        style="@style/sixCodeStyle"
-        android:layout_marginHorizontal="10dp"
-        android:autofillHints="phone"
-        app:layout_constraintBottom_toTopOf="@id/reg_proceed"
-        app:layout_constraintEnd_toStartOf="@+id/reg_verify_6"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/reg_verify_4"
-        app:layout_constraintTop_toBottomOf="@id/register_app_bar"
-        tools:ignore="LabelFor" />
-
-    <EditText
-        android:id="@+id/reg_verify_6"
-        style="@style/sixCodeStyle"
-        android:layout_marginHorizontal="10dp"
-        android:autofillHints="phone"
-        app:layout_constraintBottom_toTopOf="@id/reg_proceed"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/reg_verify_5"
         app:layout_constraintTop_toBottomOf="@id/register_app_bar"
-        tools:ignore="LabelFor" />
+        />
+
+<!--
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        >
+
+        <EditText
+            android:id="@+id/reg_verify_1"
+            style="@style/sixCodeStyle"
+            android:layout_marginHorizontal="10dp"
+            android:autofillHints="phone"
+            app:layout_constraintBottom_toTopOf="@id/reg_proceed"
+            app:layout_constraintEnd_toStartOf="@+id/reg_verify_2"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/register_app_bar"
+            tools:ignore="LabelFor" />
+
+        <EditText
+            android:id="@+id/reg_verify_2"
+            style="@style/sixCodeStyle"
+            android:layout_marginHorizontal="10dp"
+            android:autofillHints="phone"
+            app:layout_constraintBottom_toTopOf="@id/reg_proceed"
+            app:layout_constraintEnd_toStartOf="@+id/reg_verify_3"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/reg_verify_1"
+            app:layout_constraintTop_toBottomOf="@id/register_app_bar"
+            tools:ignore="LabelFor" />
+
+        <EditText
+            android:id="@+id/reg_verify_3"
+            style="@style/sixCodeStyle"
+            android:layout_marginHorizontal="10dp"
+            android:autofillHints="phone"
+            app:layout_constraintBottom_toTopOf="@id/reg_proceed"
+            app:layout_constraintEnd_toStartOf="@+id/reg_verify_4"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/reg_verify_2"
+            app:layout_constraintTop_toBottomOf="@id/register_app_bar"
+            tools:ignore="LabelFor" />
+
+        <EditText
+            android:id="@+id/reg_verify_4"
+            style="@style/sixCodeStyle"
+            android:layout_marginHorizontal="10dp"
+            android:autofillHints="phone"
+            app:layout_constraintBottom_toTopOf="@id/reg_proceed"
+            app:layout_constraintEnd_toStartOf="@+id/reg_verify_5"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/reg_verify_3"
+            app:layout_constraintTop_toBottomOf="@id/register_app_bar"
+            tools:ignore="LabelFor" />
+
+        <EditText
+            android:id="@+id/reg_verify_5"
+            style="@style/sixCodeStyle"
+            android:layout_marginHorizontal="10dp"
+            android:autofillHints="phone"
+            app:layout_constraintBottom_toTopOf="@id/reg_proceed"
+            app:layout_constraintEnd_toStartOf="@+id/reg_verify_6"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/reg_verify_4"
+            app:layout_constraintTop_toBottomOf="@id/register_app_bar"
+            tools:ignore="LabelFor" />
+
+        <EditText
+            android:id="@+id/reg_verify_6"
+            style="@style/sixCodeStyle"
+            android:layout_marginHorizontal="10dp"
+            android:autofillHints="phone"
+            app:layout_constraintBottom_toTopOf="@id/reg_proceed"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/reg_verify_5"
+            app:layout_constraintTop_toBottomOf="@id/register_app_bar"
+            tools:ignore="LabelFor" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>-->
 
     <TextView
         android:layout_width="wrap_content"
@@ -122,8 +158,8 @@
         android:textColor="#f00"
         android:textStyle="bold"
         android:visibility="invisible"
-        app:layout_constraintStart_toStartOf="@id/reg_verify_1"
-        app:layout_constraintTop_toBottomOf="@id/reg_verify_1" />
+        app:layout_constraintStart_toStartOf="@id/pinEditText"
+        app:layout_constraintTop_toBottomOf="@id/pinEditText" />
 
     <TextView
         android:id="@+id/verify_timer"
@@ -147,7 +183,7 @@
         android:textAllCaps="true"
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@id/reg_verify_6"
-        app:layout_constraintStart_toStartOf="@id/reg_verify_1" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
