@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import uz.gita.maxwaydemo.R
-import uz.gita.maxwaydemo.data.sources.model.common.FoodDataRV
+import uz.gita.maxwaydemo.data.model.common.FoodDataRV
 import uz.gita.maxwaydemo.databinding.ItemInnerBinding
 
 class FoodAdapter(private val list: List<FoodDataRV>) : RecyclerView.Adapter<FoodAdapter.FoodViewHolder>() {

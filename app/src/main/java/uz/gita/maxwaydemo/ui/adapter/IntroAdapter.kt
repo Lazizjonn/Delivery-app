@@ -8,7 +8,7 @@ import androidx.appcompat.widget.AppCompatImageView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import uz.gita.maxwaydemo.R
-import uz.gita.maxwaydemo.data.sources.model.common.IntroData
+import uz.gita.maxwaydemo.data.model.common.IntroData
 
 
 class IntroAdapter : RecyclerView.Adapter<IntroAdapter.Holder>() {

@@ -4,6 +4,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/AndroidStudioProjects/2_Working_on_projects/DeliveryApp/app/src/main/res/drawable-v24/ic_back.xml" value="0.1075" />
+        <entry key="..\:/AndroidStudioProjects/2_Working_on_projects/DeliveryApp/app/src/main/res/drawable-v24/ic_edit.xml" value="0.135" />
         <entry key="..\:/AndroidStudioProjects/2_Working_on_projects/DeliveryApp/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1155" />
         <entry key="..\:/AndroidStudioProjects/2_Working_on_projects/DeliveryApp/app/src/main/res/drawable/bg_dialog.xml" value="0.1325" />
         <entry key="..\:/AndroidStudioProjects/2_Working_on_projects/DeliveryApp/app/src/main/res/drawable/bottom_nav_background.xml" value="0.1025" />
@@ -39,16 +40,23 @@
         <entry key="..\:/AndroidStudioProjects/2_Working_on_projects/DeliveryApp/app/src/main/res/drawable/ic_settings.xml" value="0.1025" />
         <entry key="..\:/AndroidStudioProjects/2_Working_on_projects/DeliveryApp/app/src/main/res/drawable/ic_tick_square.xml" value="0.1025" />
         <entry key="..\:/AndroidStudioProjects/2_Working_on_projects/DeliveryApp/app/src/main/res/drawable/ic_time_circle.xml" value="0.1025" />
+        <entry key="..\:/AndroidStudioProjects/2_Working_on_projects/DeliveryApp/app/src/main/res/drawable/reg_edit.xml" value="0.1225" />
         <entry key="..\:/AndroidStudioProjects/2_Working_on_projects/DeliveryApp/app/src/main/res/drawable/selector_intro_tab.xml" value="0.1035" />
         <entry key="..\:/AndroidStudioProjects/2_Working_on_projects/DeliveryApp/app/src/main/res/drawable/shape_intro_button.xml" value="0.1035" />
         <entry key="..\:/AndroidStudioProjects/2_Working_on_projects/DeliveryApp/app/src/main/res/layout/activity_main.xml" value="0.19739583333333333" />
+        <entry key="..\:/AndroidStudioProjects/2_Working_on_projects/DeliveryApp/app/src/main/res/layout/current_recycle_item.xml" value="0.19739583333333333" />
         <entry key="..\:/AndroidStudioProjects/2_Working_on_projects/DeliveryApp/app/src/main/res/layout/fragment_advertisement.xml" value="0.19739583333333333" />
         <entry key="..\:/AndroidStudioProjects/2_Working_on_projects/DeliveryApp/app/src/main/res/layout/fragment_branches.xml" value="0.19739583333333333" />
+        <entry key="..\:/AndroidStudioProjects/2_Working_on_projects/DeliveryApp/app/src/main/res/layout/fragment_edit_profile.xml" value="0.15" />
         <entry key="..\:/AndroidStudioProjects/2_Working_on_projects/DeliveryApp/app/src/main/res/layout/fragment_home.xml" value="0.33" />
         <entry key="..\:/AndroidStudioProjects/2_Working_on_projects/DeliveryApp/app/src/main/res/layout/fragment_host.xml" value="0.19739583333333333" />
         <entry key="..\:/AndroidStudioProjects/2_Working_on_projects/DeliveryApp/app/src/main/res/layout/fragment_intro.xml" value="0.5" />
         <entry key="..\:/AndroidStudioProjects/2_Working_on_projects/DeliveryApp/app/src/main/res/layout/fragment_pick_detail.xml" value="0.19739583333333333" />
+        <entry key="..\:/AndroidStudioProjects/2_Working_on_projects/DeliveryApp/app/src/main/res/layout/fragment_register.xml" value="0.19739583333333333" />
+        <entry key="..\:/AndroidStudioProjects/2_Working_on_projects/DeliveryApp/app/src/main/res/layout/fragment_register_name.xml" value="0.22" />
+        <entry key="..\:/AndroidStudioProjects/2_Working_on_projects/DeliveryApp/app/src/main/res/layout/fragment_register_phone.xml" value="0.19739583333333333" />
         <entry key="..\:/AndroidStudioProjects/2_Working_on_projects/DeliveryApp/app/src/main/res/layout/fragment_splash.xml" value="0.19739583333333333" />
+        <entry key="..\:/AndroidStudioProjects/2_Working_on_projects/DeliveryApp/app/src/main/res/layout/fragment_verify.xml" value="0.25" />
         <entry key="..\:/AndroidStudioProjects/2_Working_on_projects/DeliveryApp/app/src/main/res/layout/item_ad_layout.xml" value="0.19739583333333333" />
         <entry key="..\:/AndroidStudioProjects/2_Working_on_projects/DeliveryApp/app/src/main/res/layout/item_collapsing_toolbar.xml" value="0.19739583333333333" />
         <entry key="..\:/AndroidStudioProjects/2_Working_on_projects/DeliveryApp/app/src/main/res/layout/item_inner.xml" value="0.5" />

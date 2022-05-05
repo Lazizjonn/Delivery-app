@@ -1,4 +1,4 @@
-package uz.gita.maxwaydemo.data.sources.model.response
+package uz.gita.maxwaydemo.data.model.response
 
 import com.google.firebase.auth.PhoneAuthProvider
 import java.io.Serializable

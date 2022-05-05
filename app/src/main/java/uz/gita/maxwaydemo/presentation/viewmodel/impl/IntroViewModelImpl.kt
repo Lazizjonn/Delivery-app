@@ -4,7 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import uz.gita.maxwaydemo.data.sources.local.mySharedPref.MySharedPref
-import uz.gita.maxwaydemo.data.sources.model.common.IntroData
+import uz.gita.maxwaydemo.data.model.common.IntroData
 import uz.gita.maxwaydemo.domain.repository.MealRepository
 import uz.gita.maxwaydemo.presentation.viewmodel.IntroViewModel
 import javax.inject.Inject

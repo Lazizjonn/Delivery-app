@@ -6,9 +6,9 @@ import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
-import uz.gita.maxwaydemo.data.sources.model.common.CategoryDataRV
-import uz.gita.maxwaydemo.data.sources.model.response.AdsDataFromNet
-import uz.gita.maxwaydemo.data.sources.model.response.FoodDataFromNet
+import uz.gita.maxwaydemo.data.model.common.CategoryDataRV
+import uz.gita.maxwaydemo.data.model.response.AdsDataFromNet
+import uz.gita.maxwaydemo.data.model.response.FoodDataFromNet
 import uz.gita.maxwaydemo.domain.repository.MealRepository
 import uz.gita.maxwaydemo.presentation.viewmodel.HomeViewModel
 import javax.inject.Inject

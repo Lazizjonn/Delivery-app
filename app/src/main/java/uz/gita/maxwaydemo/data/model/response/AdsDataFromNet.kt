@@ -1,4 +1,4 @@
-package uz.gita.maxwaydemo.data.sources.model.response
+package uz.gita.maxwaydemo.data.model.response
 
 data class AdsDataFromNet(
     val id: Int? = 0,

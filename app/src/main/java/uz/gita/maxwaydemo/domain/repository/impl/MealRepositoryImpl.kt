@@ -1,6 +1,5 @@
 package uz.gita.maxwaydemo.domain.repository.impl
 
-import android.util.Log
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -13,12 +12,12 @@ import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import uz.gita.maxwaydemo.R
-import uz.gita.maxwaydemo.data.sources.model.common.CategoryDataRV
-import uz.gita.maxwaydemo.data.sources.model.common.FoodDataRV
-import uz.gita.maxwaydemo.data.sources.model.common.IntroData
-import uz.gita.maxwaydemo.data.sources.model.response.AdsDataFromNet
-import uz.gita.maxwaydemo.data.sources.model.response.CategoryDataFromNet
-import uz.gita.maxwaydemo.data.sources.model.response.FoodDataFromNet
+import uz.gita.maxwaydemo.data.model.common.CategoryDataRV
+import uz.gita.maxwaydemo.data.model.common.FoodDataRV
+import uz.gita.maxwaydemo.data.model.common.IntroData
+import uz.gita.maxwaydemo.data.model.response.AdsDataFromNet
+import uz.gita.maxwaydemo.data.model.response.CategoryDataFromNet
+import uz.gita.maxwaydemo.data.model.response.FoodDataFromNet
 import uz.gita.maxwaydemo.domain.repository.MealRepository
 import javax.inject.Inject
 

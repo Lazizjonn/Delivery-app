@@ -6,23 +6,19 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import androidx.lifecycle.lifecycleScope
-import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.FirebaseException
 import com.google.firebase.auth.PhoneAuthCredential
 import com.google.firebase.auth.PhoneAuthOptions
 import com.google.firebase.auth.PhoneAuthProvider
-import com.google.rpc.Code
 import dagger.hilt.android.AndroidEntryPoint
 import uz.gita.maxwaydemo.R
 import uz.gita.maxwaydemo.app.App
-import uz.gita.maxwaydemo.data.sources.model.response.CodeTokenData
+import uz.gita.maxwaydemo.data.model.response.CodeTokenData
 import uz.gita.maxwaydemo.databinding.FragmentRegisterPhoneBinding
 import uz.gita.maxwaydemo.presentation.viewmodel.impl.RegisterPhoneViewModelImpl
 import java.util.concurrent.TimeUnit
-import javax.inject.Inject
 
 @AndroidEntryPoint
 class RegisterPhoneFragment : Fragment(R.layout.fragment_register_phone) {

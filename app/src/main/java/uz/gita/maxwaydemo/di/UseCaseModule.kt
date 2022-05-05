@@ -60,7 +60,7 @@ interface UseCaseModule {
     @Binds
     fun getRegisterUseCase(impl: RegisterUseCaseImpl): RegisterUseCase
 
-    @Binds
+
     @Binds
     fun getRegisterPhoneUseCase(impl: RegisterPhoneUseCaseImpl): RegisterPhoneUseCase
 

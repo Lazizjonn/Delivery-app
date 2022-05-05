@@ -1,4 +1,4 @@
-package uz.gita.maxwaydemo.data.sources.model.common
+package uz.gita.maxwaydemo.data.model.common
 
 import javax.inject.Singleton
 
