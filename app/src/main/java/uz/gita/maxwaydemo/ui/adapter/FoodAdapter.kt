@@ -1,12 +1,13 @@
 package uz.gita.maxwaydemo.ui.adapter
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import uz.gita.maxwaydemo.R
-import uz.gita.maxwaydemo.data.sources.local.model.common.FoodDataRV
+import uz.gita.maxwaydemo.data.sources.model.common.FoodDataRV
 import uz.gita.maxwaydemo.databinding.ItemInnerBinding
 
 class FoodAdapter(private val list: List<FoodDataRV>) : RecyclerView.Adapter<FoodAdapter.FoodViewHolder>() {
@@ -29,6 +30,7 @@ class FoodAdapter(private val list: List<FoodDataRV>) : RecyclerView.Adapter<Foo
         fun bind() {
             list[absoluteAdapterPosition].apply {
                 binding.foodNameUI.text = foodName
+                Log.d("TTT", "foodAdapter bindda: $foodName")
                 Glide.with(binding.foodPhotoUI)
                     .load(foodPhoto).into(binding.foodPhotoUI)
 

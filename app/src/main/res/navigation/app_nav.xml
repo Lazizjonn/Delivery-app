@@ -9,11 +9,7 @@
         android:id="@+id/homeFragment"
         android:name="uz.gita.maxwaydemo.ui.screens.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home">
-        <action
-            android:id="@+id/action_homeFragment_to_pickDetailFragment"
-            app:destination="@id/pickDetailFragment" />
-    </fragment>
+        tools:layout="@layout/fragment_home"/>
     <fragment
         android:id="@+id/splashFragment"
         android:name="uz.gita.maxwaydemo.ui.screens.SplashFragment"
@@ -36,19 +32,23 @@
             android:id="@+id/action_introFragment_to_hostFragment"
             app:destination="@id/hostFragment" />
     </fragment>
-    foodName, foodPhoto, foodDescription
+
     <fragment
         android:id="@+id/hostFragment"
         android:name="uz.gita.maxwaydemo.ui.screens.HostFragment"
         android:label="fragment_host"
-        tools:layout="@layout/fragment_host" />
+        tools:layout="@layout/fragment_host" >
+        <action
+            android:id="@+id/action_hostFragment_to_pickDetailFragment"
+            app:destination="@id/pickDetailFragment" />
+    </fragment>
     <fragment
         android:id="@+id/pickDetailFragment"
         android:name="uz.gita.maxwaydemo.ui.screens.PickDetailFragment"
         android:label="fragment_pick_detail"
-        tools:layout="@layout/fragment_pick_detail" >
+        tools:layout="@layout/fragment_pick_detail">
         <argument
-            android:name="foodname"
+            android:name="foodName"
             app:argType="string" />
         <argument
             android:name="foodPhoto"
@@ -61,7 +61,7 @@
         android:id="@+id/registerNameFragment"
         android:name="uz.gita.maxwaydemo.ui.screens.RegisterFragment"
         android:label="fragment_register_name"
-        tools:layout="@layout/fragment_register" >
+        tools:layout="@layout/fragment_register">
         <action
             android:id="@+id/action_registerNameFragment_to_verifyFragment"
             app:destination="@id/verifyFragment" />
@@ -71,5 +71,15 @@
         android:name="uz.gita.maxwaydemo.ui.screens.VerifyFragment"
         android:label="fragment_verify"
         tools:layout="@layout/fragment_verify" />
+    <fragment
+        android:id="@+id/orderFragment"
+        android:name="uz.gita.maxwaydemo.ui.screens.OrderFragment"
+        android:label="fragment_order"
+        tools:layout="@layout/fragment_order" />
+    <fragment
+        android:id="@+id/editProfileFragment"
+        android:name="uz.gita.maxwaydemo.ui.screens.EditProfileFragment"
+        android:label="fragment_edit_profile"
+        tools:layout="@layout/fragment_edit_profile" />
 
 </navigation>

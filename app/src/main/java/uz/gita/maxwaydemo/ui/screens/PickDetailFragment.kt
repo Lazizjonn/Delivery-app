@@ -17,11 +17,11 @@ class PickDetailFragment : Fragment(R.layout.fragment_pick_detail) {
     private val navArgs by navArgs<PickDetailFragmentArgs>()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?): Unit = with(binding) {
-        textFoodName.text = navArgs.foodname
-
-        Glide.with(binding.imageFood)
-            .load(navArgs.foodPhoto)
-            .into(binding.imageFood)
+//        textFoodName.text = navArgs.foodName
+//
+//        Glide.with(binding.imageFood)
+//            .load(navArgs.foodPhoto)
+//            .into(binding.imageFood)
 
 
     }

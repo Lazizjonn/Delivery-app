@@ -13,12 +13,12 @@ import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import uz.gita.maxwaydemo.R
-import uz.gita.maxwaydemo.data.sources.local.model.common.CategoryDataRV
-import uz.gita.maxwaydemo.data.sources.local.model.common.FoodDataRV
-import uz.gita.maxwaydemo.data.sources.local.model.common.IntroData
-import uz.gita.maxwaydemo.data.sources.local.model.response.AdsDataFromNet
-import uz.gita.maxwaydemo.data.sources.local.model.response.CategoryDataFromNet
-import uz.gita.maxwaydemo.data.sources.local.model.response.FoodDataFromNet
+import uz.gita.maxwaydemo.data.sources.model.common.CategoryDataRV
+import uz.gita.maxwaydemo.data.sources.model.common.FoodDataRV
+import uz.gita.maxwaydemo.data.sources.model.common.IntroData
+import uz.gita.maxwaydemo.data.sources.model.response.AdsDataFromNet
+import uz.gita.maxwaydemo.data.sources.model.response.CategoryDataFromNet
+import uz.gita.maxwaydemo.data.sources.model.response.FoodDataFromNet
 import uz.gita.maxwaydemo.domain.repository.MealRepository
 import javax.inject.Inject
 
@@ -75,7 +75,6 @@ class MealRepositoryImpl @Inject constructor(
                 .onFailure {
                     trySendBlocking(Result.failure(Exception(it)))
                 }
-            Log.d("TTT", "getting from internet categories size: " + data.size)
         }
             .addOnFailureListener {
                 trySendBlocking(Result.failure(it))
@@ -90,7 +89,6 @@ class MealRepositoryImpl @Inject constructor(
             }
             trySendBlocking(Result.success(data)
                 .onFailure { trySendBlocking(Result.failure(Exception(it))) })
-            Log.d("TTT", "getting from internet foods size: " + data.size)
         }
 
         foods.get().addOnFailureListener {
@@ -105,17 +103,14 @@ class MealRepositoryImpl @Inject constructor(
 
         getAllCategoriesPhotosFromFirebase().onEach { it ->
             it.onSuccess {
-                Log.d("TTT", "categoryni olish " + it.size)
                 categoryList.addAll(it)
             }
                 .onFailure {  //errorLiveData.value = it.message
-                    Log.d("TTT", "failure: ")
                 }
         }.launchIn(scope)
 
         getAllFoodsPhotosFromFirebase().onEach { it ->
             it.onSuccess {
-                Log.d("TTT", "foodni olish " + it.size)
                 foodsList.addAll(it)
             }
                 .onFailure {  //errorLiveData.value = it.message
@@ -125,22 +120,15 @@ class MealRepositoryImpl @Inject constructor(
         delay(2000)
         val readyData = ArrayList<CategoryDataRV>()
 
-        Log.d("TTT", "for boshlanyati ")
         for (i in 0 until categoryList.size) {
-            Log.d("TTT", "for boshlandii $i")
             val readyFoods = ArrayList<FoodDataRV>()
             for (foods in foodsList) {
-                Log.d("TTT", "for boshlandii ${foods.id}")
                 if (categoryList[i].id == foods.categoryID) {
                     readyFoods.add(FoodDataRV(foods.name!!, foods.image!!, foods.cost!!, foods.description!!))
                 }
             }
             readyData.add(CategoryDataRV(i,categoryList[i].name!!, readyFoods))
 
-            /*readyData[i].list = readyFoods as List<FoodDataRV>
-            readyData[i].categoryName = categoryList[i].name!!
-            Log.d("TTT", "getAllCategoriesForRV: " + categoryList[i].name)
-            readyData[i].id = i*/
         }
 
         categories.get().addOnSuccessListener {
@@ -152,26 +140,5 @@ class MealRepositoryImpl @Inject constructor(
 
         awaitClose {}
     }.flowOn(Dispatchers.IO)
-
-
-    /* foods.addSnapshotListener { querySnapshot,exception ->
-         if (exception == null){
-//                emit(Result.failure<Exception>(exception!!))
-             return@addSnapshotListener
-         }
-
-         if (querySnapshot != null){
-             for(item in querySnapshot ){
-             var food = item.toObject(FoodDataFromNet::class.java)
-                 if (!mFoodList.contains(food)){
-                     mFoodList.add(food)
-                 }
-             }
-             suspend {
-                 emit(Result.success(mFoodList))
-             }
-         }
-     }*/
-
 
 }

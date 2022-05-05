@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import uz.gita.maxwaydemo.R
-import uz.gita.maxwaydemo.data.sources.local.model.common.CategoryDataRV
+import uz.gita.maxwaydemo.data.sources.model.common.CategoryDataRV
 import uz.gita.maxwaydemo.databinding.ItemOutherBinding
 
 class CategoryAdapter(private val list: List<CategoryDataRV>) : RecyclerView.Adapter<CategoryAdapter.CategoryViewHolder>() {
@@ -31,9 +31,10 @@ class CategoryAdapter(private val list: List<CategoryDataRV>) : RecyclerView.Ada
                 Log.d("TTT", "bind:food.size "+(this.list[0].toString()))
                 binding.foodTypeUI.text = categoryName
 
-                val adapter = FoodAdapter(this.list)
+                val adapter = FoodAdapter(list)
                 adapter.setFoodClickListener { foodName, foodPhoto, foodDescription ->
                     foodClickListener?.invoke(foodName, foodPhoto, foodDescription)
+                    Log.d("TTT", "CategoryAdapter bindda: $foodName")
                 }
                 binding.innerList.adapter = adapter
                 binding.innerList.layoutManager = GridLayoutManager(itemView.context, 2, GridLayoutManager.VERTICAL, false)

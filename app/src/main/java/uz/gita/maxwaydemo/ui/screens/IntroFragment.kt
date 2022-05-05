@@ -38,7 +38,6 @@ class IntroFragment : Fragment(R.layout.fragment_intro) {
             }
         })
 
-
         introButtonSkip.setOnClickListener { viewModel.clickedEnterOrSkip() }
 
         viewModel.openHomeFragmentLiveData.observe(viewLifecycleOwner, openHomeFragmentObserver)

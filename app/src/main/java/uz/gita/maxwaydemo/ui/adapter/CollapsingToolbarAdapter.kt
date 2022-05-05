@@ -6,8 +6,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import uz.gita.maxwaydemo.R
-import uz.gita.maxwaydemo.data.sources.local.model.common.CategoryDataRV
-import uz.gita.maxwaydemo.data.sources.local.model.common.ToolbarData
+import uz.gita.maxwaydemo.data.sources.model.common.CategoryDataRV
 import uz.gita.maxwaydemo.databinding.ItemCollapsingToolbarBinding
 
 class CollapsingToolbarAdapter(private val list: List<CategoryDataRV>) : RecyclerView.Adapter<CollapsingToolbarAdapter.CollapsingToolbarViewHolder>() {

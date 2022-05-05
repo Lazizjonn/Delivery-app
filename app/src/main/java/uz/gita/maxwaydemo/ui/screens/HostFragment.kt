@@ -3,6 +3,7 @@ package uz.gita.maxwaydemo.ui.screens
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
 import dagger.hilt.android.AndroidEntryPoint
 import uz.gita.maxwaydemo.R
@@ -17,6 +18,8 @@ class HostFragment : Fragment(R.layout.fragment_host) {
     private lateinit var active: Fragment
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+
+
 
         var transact = childFragmentManager.beginTransaction()
         active = HomeFragment()
@@ -42,8 +45,14 @@ class HostFragment : Fragment(R.layout.fragment_host) {
             true
         }
 
-    }
+        mHome.adapterList?.let {
+            it.setFoodClickListener { foodName, foodPhoto, foodDescription ->
+                findNavController().navigate(HostFragmentDirections.actionHostFragmentToPickDetailFragment(foodName, foodPhoto, foodDescription ))
+            }
+        }
 
+
+    }
 
 }
 

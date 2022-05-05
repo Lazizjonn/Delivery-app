@@ -6,67 +6,66 @@ import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ViewModelComponent
 import uz.gita.maxwaydemo.usecase.*
 import uz.gita.maxwaydemo.usecase.impl.*
-import javax.inject.Singleton
 
 
 @[Module InstallIn(ViewModelComponent::class)]
 interface UseCaseModule {
 
-    @[Singleton Binds]
+    @Binds
     fun getAboutServiceUseCase(impl: AboutServiceUseCaseImpl): AboutServiceUseCase
 
-    @[Singleton Binds]
+    @Binds
     fun getAdvertisementUseCase(impl: AdvertisementUseCaseImpl): AdvertisementUseCase
 
-    @[Singleton Binds]
+    @Binds
     fun getBranchesUseCase(impl: BranchesUseCaseImpl): BranchesUseCase
 
-    @[Singleton Binds]
+    @Binds
     fun getCheckoutOrderFirstUseCase(impl: CheckoutOrderFirstUseCaseImpl): CheckoutOrderFirstUseCase
 
-    @[Singleton Binds]
+    @Binds
     fun getCheckoutOrderSecondUseCase(impl: CheckoutOrderSecondUseCaseImpl): CheckoutOrderSecondUseCase
 
-    @[Singleton Binds]
+    @Binds
     fun getEditProfileUseCase(impl: EditProfileUseCaseImpl): EditProfileUseCase
 
-    @[Singleton Binds]
+    @Binds
     fun getHomeUseCase(impl: HomeUseCaseImpl): HomeUseCase
 
-    @[Singleton Binds]
+    @Binds
     fun getHostUseCase(impl: HostUseCaseImpl): HostUseCase
 
-    @[Singleton Binds]
+    @Binds
     fun getIntroUseCase(impl: IntroUseCaseImpl): IntroUseCase
 
-    @[Singleton Binds]
+    @Binds
     fun getMyAddressUseCase(impl: MyAddressUseCaseImpl): MyAddressUseCase
 
-    @[Singleton Binds]
+    @Binds
     fun getOrderCurrentUseCase(impl: OrderCurrentUseCaseImpl): OrderCurrentUseCase
 
-    @[Singleton Binds]
+    @Binds
     fun getOrderHistoryUseCase(impl: OrderHistoryUseCaseImpl): OrderHistoryUseCase
 
-    @[Singleton Binds]
+    @Binds
     fun getOrderUseCase(impl: OrderUseCaseImpl): OrderUseCase
 
-    @[Singleton Binds]
+    @Binds
     fun getPickDetailUseCase(impl: PickDetailUseCaseImpl): PickDetailUseCase
 
-    @[Singleton Binds]
+    @Binds
     fun getPromotionsUseCase(impl: PromotionsUseCaseImpl): PromotionsUseCase
 
-    @[Singleton Binds]
+    @Binds
     fun getRegisterUseCase(impl: RegisterUseCaseImpl): RegisterUseCase
 
-    @[Singleton Binds]
+    @Binds
     fun getSettingsUseCase(impl: SettingsUseCaseImpl): SettingsUseCase
 
-    @[Singleton Binds]
+    @Binds
     fun getSplashUseCase(impl: SplashUseCaseImpl): SplashUseCase
 
-    @[Singleton Binds]
+    @Binds
     fun getVerifyUseCase(impl: VerifyUseCaseImpl): VerifyUseCase
 
 }
