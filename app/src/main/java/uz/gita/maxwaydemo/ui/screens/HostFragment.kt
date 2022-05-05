@@ -14,7 +14,7 @@ class HostFragment : Fragment(R.layout.fragment_host) {
     private val binding by viewBinding(FragmentHostBinding::bind)
     private val mHome = HomeFragment()
     private val mOrder = OrderFragment()
-    private val mAccount = AccountMainFragment()
+    private val mAccount = RegisterPhoneFragment()
     private lateinit var active: Fragment
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

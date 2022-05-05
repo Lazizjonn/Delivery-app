@@ -2,6 +2,7 @@ package uz.gita.maxwaydemo.di
 
 import dagger.Binds
 import dagger.Module
+import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ViewModelComponent
 import uz.gita.maxwaydemo.usecase.*
@@ -58,6 +59,10 @@ interface UseCaseModule {
 
     @Binds
     fun getRegisterUseCase(impl: RegisterUseCaseImpl): RegisterUseCase
+
+    @Binds
+    @Binds
+    fun getRegisterPhoneUseCase(impl: RegisterPhoneUseCaseImpl): RegisterPhoneUseCase
 
     @Binds
     fun getSettingsUseCase(impl: SettingsUseCaseImpl): SettingsUseCase

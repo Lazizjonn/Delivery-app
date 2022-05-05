@@ -13,6 +13,10 @@ import by.kirich1409.viewbindingdelegate.viewBinding
 import dagger.hilt.android.AndroidEntryPoint
 import uz.gita.maxwaydemo.R
 import uz.gita.maxwaydemo.data.sources.model.common.CategoryDataRV
+import uz.gita.maxwaydemo.data.sources.model.common.FoodDataRV
+import uz.gita.maxwaydemo.data.sources.model.response.AdsDataFromNet
+import uz.gita.maxwaydemo.data.sources.model.response.FoodDataFromNet
+import uz.gita.maxwaydemo.data.sources.model.common.CategoryDataRV
 import uz.gita.maxwaydemo.data.sources.model.response.AdsDataFromNet
 import uz.gita.maxwaydemo.data.sources.model.response.FoodDataFromNet
 import uz.gita.maxwaydemo.databinding.FragmentHomeBinding
@@ -28,6 +32,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     private val viewModel: HomeViewModel by viewModels<HomeViewModelImpl>()
     private val categoryListRV: MutableList<CategoryDataRV> = ArrayList()
     var adapterList: CategoryAdapter? = null
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 //        adapterList = CategoryAdapter(arrayListOf())
@@ -125,4 +130,10 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         }
         binding.categoryRecyclerviewSelf.adapter = adapter
         binding.categoryRecyclerviewSelf.layoutManager = LinearLayoutManager(requireContext())
+    }
+
+   /* private fun setAdViewPager() {
+        val list = listOf<AdsDataFromNet>()
+        adsAdapter = AdLoopingPagerAdapter(requireContext(), list, true)  // LoopingAdapter
+//        binding.adViewPagerLayout.adapter = adsAdapter
     }*/

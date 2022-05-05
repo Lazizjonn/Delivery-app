@@ -122,50 +122,6 @@
             android:maxLength="20"
             android:padding="10dp"
             android:textSize="16sp" />
-
-
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:fontFamily="@font/merriweather_regular"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:text="Phone"
-            android:textColor="@color/maxColor"
-            android:textSize="18sp"
-            android:textStyle="bold"/>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/phone_input_layout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/reg_edit"
-            app:prefixText="+998"
-            app:hintEnabled="false"
-            android:fontFamily="@font/merriweather_regular"
-            android:layout_marginHorizontal="10dp"
-            app:endIconMode="clear_text"
-            >
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/reg_phone"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:autofillHints="phone"
-                android:fontFamily="@font/merriweather_regular"
-                android:background="#00445454"
-                android:hint="+998 xx xxx xx xx"
-                android:inputType="phone"
-                android:maxLength="9"
-                android:padding="8dp"
-                android:textSize="16sp"
-                android:layout_marginHorizontal="10dp"
-                />
-        </com.google.android.material.textfield.TextInputLayout>
-
-
-
-
     </androidx.appcompat.widget.LinearLayoutCompat>
 
 

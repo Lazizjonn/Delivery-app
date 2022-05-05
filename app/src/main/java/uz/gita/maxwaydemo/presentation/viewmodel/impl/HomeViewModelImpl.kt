@@ -17,6 +17,7 @@ import javax.inject.Inject
 class HomeViewModelImpl @Inject constructor(
     private val repository: MealRepository
 ) : HomeViewModel, ViewModel() {
+
     override val adsLiveData = MutableLiveData<List<AdsDataFromNet>>()
     override val categoryLiveData = MutableLiveData<List<CategoryDataRV>>()
     override val foodsLiveData = MutableLiveData<List<FoodDataFromNet>>()

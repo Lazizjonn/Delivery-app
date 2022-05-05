@@ -65,12 +65,27 @@
         <action
             android:id="@+id/action_registerNameFragment_to_verifyFragment"
             app:destination="@id/verifyFragment" />
+        <argument
+            android:name="phone"
+            app:argType="string" />
+        <argument
+            android:name="code"
+            app:argType="uz.gita.maxwaydemo.data.sources.model.response.CodeTokenData" />
     </fragment>
     <fragment
         android:id="@+id/verifyFragment"
         android:name="uz.gita.maxwaydemo.ui.screens.VerifyFragment"
         android:label="fragment_verify"
         tools:layout="@layout/fragment_verify" />
+    <fragment
+        android:id="@+id/registerPhoneFragment"
+        android:name="uz.gita.maxwaydemo.ui.screens.RegisterPhoneFragment"
+        android:label="fragment_register_phone"
+        tools:layout="@layout/fragment_register_phone" >
+        <action
+            android:id="@+id/action_registerPhoneFragment_to_registerNameFragment"
+            app:destination="@id/registerNameFragment" />
+    </fragment>
     <fragment
         android:id="@+id/orderFragment"
         android:name="uz.gita.maxwaydemo.ui.screens.OrderFragment"

@@ -1,10 +1,10 @@
-package uz.gita.maxwaydemo.domain.repository
+package uz.gita.maxwaydemo.usecase
 
 import android.app.Activity
-import androidx.lifecycle.LiveData
 import uz.gita.maxwaydemo.data.sources.model.response.CodeTokenData
 
-interface AuthRepository {
+
+interface RegisterPhoneUseCase {
 
     fun regPhoneRequest(activity: Activity, phone: String)
 
