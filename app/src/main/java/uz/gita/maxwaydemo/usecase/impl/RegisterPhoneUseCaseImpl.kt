@@ -14,14 +14,11 @@ class RegisterPhoneUseCaseImpl @Inject constructor(private val authRepository: A
 
 
     override fun regPhoneRequest(activity: Activity, phone: String){
-        val result = authRepository.regPhoneRequest(activity,phone)
+        /*val result = authRepository.regPhoneRequest(activity,phone)*/
 
     }
 
-    override fun getCredentials(): CodeTokenData? {
-        val result = authRepository.getCredentials()
-        return result
-    }
+
 
 
 }

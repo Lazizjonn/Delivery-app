@@ -8,6 +8,4 @@ interface RegisterPhoneViewModel {
     val credentialLivedata: LiveData<CodeTokenData>
 
     fun regPhoneRequest(activity: Activity, phone: String)
-
-    fun getCredentials(): CodeTokenData?
 }

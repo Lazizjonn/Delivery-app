@@ -23,21 +23,14 @@ class RegisterPhoneViewModelImpl @Inject constructor(
     override val credentialLivedata = MutableLiveData<CodeTokenData>()
 
     init {
-        authRepository.setSmsCodeListener {
-            val result = getCredentials()
-            Log.d("TAG", "codeListener: " + result.toString())
-            result?.let { credentialLivedata.value = it }
-        }
+
     }
 
     override fun regPhoneRequest(activity: Activity, phone: String) {
         regPhone.regPhoneRequest(activity, phone)
     }
 
-    override fun getCredentials(): CodeTokenData? {
-        val result = regPhone.getCredentials()
-        return result
-    }
+
 
 
 }

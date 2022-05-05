@@ -8,5 +8,4 @@ interface AuthRepository {
 
     fun regPhoneRequest(activity: Activity, phone: String)
 
-    fun getCredentials(): CodeTokenData?
 }

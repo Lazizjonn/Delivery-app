@@ -21,55 +21,10 @@ class AuthRepositoryImpl @Inject constructor(
 ) : AuthRepository {
 
 
-    private var codeTokenData: CodeTokenData? = null
-
-    private var smsCodeListener: ((Unit)-> Unit)? = null
-    fun setSmsCodeListener(block: (Unit)-> Unit){
-        this.smsCodeListener = block
-    }
-
-
 
 
     override fun regPhoneRequest(activity: Activity, phone: String) {
 
-        val option = PhoneAuthOptions.newBuilder()
-            .setActivity(activity)
-            .setTimeout(10, TimeUnit.SECONDS)
-            .setPhoneNumber(phone)
-            .setCallbacks(regPhoneCallBack)
-            .build()
-
-        PhoneAuthProvider.verifyPhoneNumber(option)
-    }
-
-    override fun getCredentials(): CodeTokenData? {
-        return when(codeTokenData){
-            null -> null
-            else -> codeTokenData
-        }
-    }
-
-    val regPhoneCallBack = object: PhoneAuthProvider.OnVerificationStateChangedCallbacks(){
-        override fun onVerificationCompleted(p0: PhoneAuthCredential) {
-            p0.smsCode
-        }
-
-        override fun onVerificationFailed(p0: FirebaseException) {
-            // failed todo
-        }
-
-        override fun onCodeAutoRetrievalTimeOut(p0: String) {
-            // resend yoz
-        }
-
-        override fun onCodeSent(code: String, token: PhoneAuthProvider.ForceResendingToken) {
-            super.onCodeSent(code, token)
-            // return code and token
-            codeTokenData = CodeTokenData(code, token)
-            Log.d("TAG", "codeListener: " + code)
-            smsCodeListener?.invoke(Unit)
-        }
     }
 
 
