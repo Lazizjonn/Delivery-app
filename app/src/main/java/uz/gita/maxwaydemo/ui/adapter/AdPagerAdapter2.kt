@@ -10,7 +10,7 @@ import androidx.viewpager.widget.PagerAdapter
 import androidx.viewpager.widget.ViewPager
 import dagger.hilt.android.qualifiers.ApplicationContext
 import uz.gita.maxwaydemo.R
-import uz.gita.maxwaydemo.data.sources.local.model.common.AdPagerData
+import uz.gita.maxwaydemo.data.sources.model.common.AdPagerData
 
 // ishlatilmayabdi
 class AdPagerAdapter2 (@ApplicationContext private val context: Context,

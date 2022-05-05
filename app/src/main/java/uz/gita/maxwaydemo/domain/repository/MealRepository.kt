@@ -2,12 +2,9 @@ package uz.gita.maxwaydemo.domain.repository
 
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.Flow
-import retrofit2.Response
-import uz.gita.maxwaydemo.data.sources.local.model.common.CategoryDataRV
-import uz.gita.maxwaydemo.data.sources.local.model.common.IntroData
-import uz.gita.maxwaydemo.data.sources.local.model.response.AdsDataFromNet
-import uz.gita.maxwaydemo.data.sources.local.model.response.CategoryDataFromNet
-import uz.gita.maxwaydemo.data.sources.local.model.response.FoodDataFromNet
+import uz.gita.maxwaydemo.data.sources.model.common.CategoryDataRV
+import uz.gita.maxwaydemo.data.sources.model.common.IntroData
+import uz.gita.maxwaydemo.data.sources.model.response.AdsDataFromNet
 
 interface MealRepository {
 

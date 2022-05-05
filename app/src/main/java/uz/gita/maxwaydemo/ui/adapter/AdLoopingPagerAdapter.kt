@@ -7,8 +7,7 @@ import android.view.ViewGroup
 import com.asksira.loopingviewpager.LoopingPagerAdapter
 import com.bumptech.glide.Glide
 import uz.gita.maxwaydemo.R
-import uz.gita.maxwaydemo.data.sources.local.model.common.AdPagerData
-import uz.gita.maxwaydemo.data.sources.local.model.response.AdsDataFromNet
+import uz.gita.maxwaydemo.data.sources.model.response.AdsDataFromNet
 import uz.gita.maxwaydemo.databinding.ItemAdLayoutBinding
 
 

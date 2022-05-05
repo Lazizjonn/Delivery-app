@@ -13,12 +13,12 @@ import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import uz.gita.maxwaydemo.R
-import uz.gita.maxwaydemo.data.sources.local.model.common.CategoryDataRV
-import uz.gita.maxwaydemo.data.sources.local.model.common.FoodDataRV
-import uz.gita.maxwaydemo.data.sources.local.model.common.IntroData
-import uz.gita.maxwaydemo.data.sources.local.model.response.AdsDataFromNet
-import uz.gita.maxwaydemo.data.sources.local.model.response.CategoryDataFromNet
-import uz.gita.maxwaydemo.data.sources.local.model.response.FoodDataFromNet
+import uz.gita.maxwaydemo.data.sources.model.common.CategoryDataRV
+import uz.gita.maxwaydemo.data.sources.model.common.FoodDataRV
+import uz.gita.maxwaydemo.data.sources.model.common.IntroData
+import uz.gita.maxwaydemo.data.sources.model.response.AdsDataFromNet
+import uz.gita.maxwaydemo.data.sources.model.response.CategoryDataFromNet
+import uz.gita.maxwaydemo.data.sources.model.response.FoodDataFromNet
 import uz.gita.maxwaydemo.domain.repository.MealRepository
 import javax.inject.Inject
 
