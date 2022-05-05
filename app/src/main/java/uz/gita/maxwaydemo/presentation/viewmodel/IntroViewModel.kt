@@ -1,7 +1,7 @@
 package uz.gita.maxwaydemo.presentation.viewmodel
 
 import androidx.lifecycle.LiveData
-import uz.gita.maxwaydemo.data.sources.model.common.IntroData
+import uz.gita.maxwaydemo.data.model.common.IntroData
 
 interface IntroViewModel {
 

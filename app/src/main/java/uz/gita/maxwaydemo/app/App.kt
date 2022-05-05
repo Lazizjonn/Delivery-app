@@ -2,7 +2,7 @@ package uz.gita.maxwaydemo.app
 
 import android.app.Application
 import dagger.hilt.android.HiltAndroidApp
-import uz.gita.maxwaydemo.data.sources.model.common.UserData
+import uz.gita.maxwaydemo.data.model.common.MyUser
 
 @HiltAndroidApp
 class App : Application() {
@@ -10,11 +10,11 @@ class App : Application() {
     override fun onCreate() {
         super.onCreate()
         instance = this
-        userData = UserData(0)
+        myUser = MyUser("0", "", "", "")
     }
 
     companion object {
-        lateinit var userData: UserData
+        lateinit var myUser: MyUser
         lateinit var instance: App
             private set
     } //

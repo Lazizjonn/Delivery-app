@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/app_nav"
-    app:startDestination="@id/splashFragment">
+    app:startDestination="@id/registerPhoneFragment">
 
     <fragment
         android:id="@+id/homeFragment"
@@ -70,13 +70,17 @@
             app:argType="string" />
         <argument
             android:name="code"
-            app:argType="uz.gita.maxwaydemo.data.sources.model.response.CodeTokenData" />
+            app:argType="uz.gita.maxwaydemo.data.model.response.CodeTokenData" />
     </fragment>
     <fragment
         android:id="@+id/verifyFragment"
         android:name="uz.gita.maxwaydemo.ui.screens.VerifyFragment"
         android:label="fragment_verify"
-        tools:layout="@layout/fragment_verify" />
+        tools:layout="@layout/fragment_verify" >
+        <argument
+            android:name="regData"
+            app:argType="uz.gita.maxwaydemo.data.model.request.RegisterRequest" />
+    </fragment>
     <fragment
         android:id="@+id/registerPhoneFragment"
         android:name="uz.gita.maxwaydemo.ui.screens.RegisterPhoneFragment"

@@ -1,9 +1,9 @@
 package uz.gita.maxwaydemo.presentation.viewmodel
 
 import androidx.lifecycle.LiveData
-import uz.gita.maxwaydemo.data.sources.model.common.CategoryDataRV
-import uz.gita.maxwaydemo.data.sources.model.response.AdsDataFromNet
-import uz.gita.maxwaydemo.data.sources.model.response.FoodDataFromNet
+import uz.gita.maxwaydemo.data.model.common.CategoryDataRV
+import uz.gita.maxwaydemo.data.model.response.AdsDataFromNet
+import uz.gita.maxwaydemo.data.model.response.FoodDataFromNet
 
 interface HomeViewModel {
 

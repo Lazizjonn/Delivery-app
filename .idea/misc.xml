@@ -56,6 +56,12 @@
         <entry key="..\:/AndroidStudioProjects/2_Working_on_projects/DeliveryApp/app/src/main/res/layout/item_outher.xml" value="0.19739583333333333" />
         <entry key="..\:/AndroidStudioProjects/2_Working_on_projects/DeliveryApp/app/src/main/res/layout/language_dialog.xml" value="0.19739583333333333" />
         <entry key="..\:/AndroidStudioProjects/2_Working_on_projects/DeliveryApp/app/src/main/res/menu/bottombar_menu.xml" value="0.19739583333333333" />
+        <entry key="..\:/Program Files/Android/AndroidPROJECTS/deliveryapp/app/src/main/res/drawable/reg_edit.xml" value="0.1415" />
+        <entry key="..\:/Program Files/Android/AndroidPROJECTS/deliveryapp/app/src/main/res/layout/fragment_account.xml" value="0.1796875" />
+        <entry key="..\:/Program Files/Android/AndroidPROJECTS/deliveryapp/app/src/main/res/layout/fragment_register.xml" value="0.1796875" />
+        <entry key="..\:/Program Files/Android/AndroidPROJECTS/deliveryapp/app/src/main/res/layout/fragment_register_name.xml" value="0.22" />
+        <entry key="..\:/Program Files/Android/AndroidPROJECTS/deliveryapp/app/src/main/res/layout/fragment_register_phone.xml" value="0.3333333333333333" />
+        <entry key="..\:/Program Files/Android/AndroidPROJECTS/deliveryapp/app/src/main/res/layout/fragment_verify.xml" value="0.16666666666666666" />
       </map>
     </option>
   </component>
