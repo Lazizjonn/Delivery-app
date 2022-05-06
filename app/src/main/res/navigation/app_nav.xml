@@ -85,11 +85,7 @@
         android:id="@+id/registerPhoneFragment"
         android:name="uz.gita.maxwaydemo.ui.screens.RegisterPhoneFragment"
         android:label="fragment_register_phone"
-        tools:layout="@layout/fragment_register_phone" >
-        <action
-            android:id="@+id/action_registerPhoneFragment_to_registerNameFragment"
-            app:destination="@id/registerNameFragment" />
-    </fragment>
+        tools:layout="@layout/fragment_register_phone" />
     <fragment
         android:id="@+id/orderFragment"
         android:name="uz.gita.maxwaydemo.ui.screens.OrderFragment"

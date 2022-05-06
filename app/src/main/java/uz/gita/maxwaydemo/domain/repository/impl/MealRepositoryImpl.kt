@@ -23,12 +23,12 @@ import javax.inject.Inject
 
 @Suppress("UNCHECKED_CAST")
 class MealRepositoryImpl @Inject constructor(
-    private val firestore: FirebaseFirestore
+    private val fireStore: FirebaseFirestore
 ) : MealRepository {
 
-    private val ads = firestore.collection("ads")
-    private val categories = firestore.collection("category")
-    private val foods = firestore.collection("foods")
+    private val ads = fireStore.collection("ads")
+    private val categories = fireStore.collection("category")
+    private val foods = fireStore.collection("foods")
 
 
     override fun setDataForIntroFragment(): MutableList<IntroData> {
@@ -38,17 +38,6 @@ class MealRepositoryImpl @Inject constructor(
         list.add(IntroData(R.color.white, R.drawable.group_3))
         list.add(IntroData(R.color.white, R.drawable.group_4))
         return list
-    }
-
-    override fun loadImagesFromFirebase(): ArrayList<Int> {
-        val images = ArrayList<Int>()
-        images.add(R.drawable.group_1)
-        images.add(R.drawable.group_2)
-        images.add(R.drawable.group_3)
-        images.add(R.drawable.group_4)
-        images.add(R.drawable.group_1)
-        images.add(R.drawable.group_2)
-        return images
     }
 
     override fun getAllAddsPhotosFromFirebase() = callbackFlow<Result<List<AdsDataFromNet>>> {

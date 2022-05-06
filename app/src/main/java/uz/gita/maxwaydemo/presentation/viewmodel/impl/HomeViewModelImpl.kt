@@ -34,7 +34,7 @@ class HomeViewModelImpl @Inject constructor(
 
 
     override fun loadImagesFromFirebase(): ArrayList<Int> {
-        return repository.loadImagesFromFirebase()
+        return arrayListOf()
     }
 
     override fun getAllAddsFromRepository() {

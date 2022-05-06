@@ -10,7 +10,7 @@ interface MealRepository {
 
     fun setDataForIntroFragment(): MutableList<IntroData>
 
-    fun loadImagesFromFirebase(): ArrayList<Int>
+//    fun loadImagesFromFirebase(): ArrayList<Int>
 
 
     fun getAllAddsPhotosFromFirebase(): Flow<Result<List<AdsDataFromNet>>>
