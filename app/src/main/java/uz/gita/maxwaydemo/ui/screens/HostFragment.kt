@@ -3,11 +3,12 @@ package uz.gita.maxwaydemo.ui.screens
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
+import com.google.android.material.tabs.TabLayoutMediator
 import dagger.hilt.android.AndroidEntryPoint
 import uz.gita.maxwaydemo.R
 import uz.gita.maxwaydemo.databinding.FragmentHostBinding
+import uz.gita.maxwaydemo.ui.adapter.HostViewPagerAdapter
 
 @AndroidEntryPoint
 class HostFragment : Fragment(R.layout.fragment_host) {
@@ -15,13 +16,26 @@ class HostFragment : Fragment(R.layout.fragment_host) {
     private val mHome = HomeFragment()
     private val mOrder = OrderFragment()
     private val mAccount = RegisterPhoneFragment()
-    private lateinit var active: Fragment
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
+        val viewPagerAdapter = HostViewPagerAdapter(
+            listOf(mHome, mOrder, mAccount),
+            requireActivity().supportFragmentManager, lifecycle
+        )
 
+        binding.mainContainer.adapter = viewPagerAdapter
+        binding.mainContainer.isUserInputEnabled = false
 
-        var transact = childFragmentManager.beginTransaction()
+        TabLayoutMediator(binding.bottomNav, binding.mainContainer) { tab, position ->
+
+        }.attach()
+
+    }
+
+}
+
+/*        var transact = childFragmentManager.beginTransaction()
         active = HomeFragment()
         transact.add(R.id.main_container, active, "4").commit()
 
@@ -49,10 +63,4 @@ class HostFragment : Fragment(R.layout.fragment_host) {
             it.setFoodClickListener { foodName, foodPhoto, foodDescription ->
                 findNavController().navigate(HostFragmentDirections.actionHostFragmentToPickDetailFragment(foodName, foodPhoto, foodDescription ))
             }
-        }
-
-
-    }
-
-}
-
+        }*/

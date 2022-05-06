@@ -13,10 +13,6 @@ import by.kirich1409.viewbindingdelegate.viewBinding
 import dagger.hilt.android.AndroidEntryPoint
 import uz.gita.maxwaydemo.R
 import uz.gita.maxwaydemo.data.model.common.CategoryDataRV
-import uz.gita.maxwaydemo.data.model.common.FoodDataRV
-import uz.gita.maxwaydemo.data.model.response.AdsDataFromNet
-import uz.gita.maxwaydemo.data.model.response.FoodDataFromNet
-import uz.gita.maxwaydemo.data.model.common.CategoryDataRV
 import uz.gita.maxwaydemo.data.model.response.AdsDataFromNet
 import uz.gita.maxwaydemo.data.model.response.FoodDataFromNet
 import uz.gita.maxwaydemo.databinding.FragmentHomeBinding
