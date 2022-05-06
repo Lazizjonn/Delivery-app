@@ -17,7 +17,7 @@ class HostFragment : Fragment(R.layout.fragment_host) {
     private val binding by viewBinding(FragmentHostBinding::bind)
     private val mHome = HomeFragment()
     private val mOrder = OrderFragment()
-    private val mAccount = RegisterPhoneFragment()
+    private val mAccount = EditProfileFragment()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 

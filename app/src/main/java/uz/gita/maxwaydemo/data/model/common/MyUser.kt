@@ -11,6 +11,8 @@ data class MyUser(
     var email: String? = null,
     val geoPoint: String? = null,
     val cards: List<CreditCardsData>? = null
-)
+) {
 
+    constructor() : this("","","","")
+}
 

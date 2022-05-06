@@ -19,7 +19,7 @@ import uz.gita.maxwaydemo.presentation.viewmodel.impl.RegisterViewModelImpl
 class RegisterFragment : Fragment(R.layout.fragment_register) {
 
     private val viewModel: RegisterViewModel by viewModels<RegisterViewModelImpl>()
-    private val navArgs by navArgs<RegisterFragmentArgs>()
+
 
     private val binding by viewBinding(FragmentRegisterBinding::bind)
 
@@ -36,13 +36,14 @@ class RegisterFragment : Fragment(R.layout.fragment_register) {
             if(!regSurnameEditText.text.equals("") && regSurnameEditText.text.length > 3){
                 if(!regNameEditText.text.equals("") && regNameEditText.text.length > 3){
                     // viewModel todo regEmailEditText
+                    val data: CodeTokenData = arguments?.getSerializable("phone_code") as CodeTokenData
                         val temp = RegisterRequest(
                             regSurnameEditText.text.toString(),
                             regNameEditText.text.toString(),
-                            navArgs.phone,
+                            data.phone,
                             null,
-                            navArgs.code.code,
-                            navArgs.code.token)
+                            data.code,
+                            data.token)
                         findNavController().navigate(
                             RegisterFragmentDirections.actionRegisterNameFragmentToVerifyFragment(temp))
 

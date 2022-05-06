@@ -1,7 +1,6 @@
 package uz.gita.maxwaydemo.data.sources.local.mySharedPref
 
 import android.content.Context
-import android.service.autofill.UserData
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import dagger.hilt.android.qualifiers.ApplicationContext
@@ -22,17 +21,17 @@ class MySharedPref @Inject constructor(@ApplicationContext context: Context) {
 
     fun putUser(obj: MyUser, key: String) {
         val json: String = Gson().toJson(obj)
-        pref!!.edit().remove(key).apply()
+//        pref!!.edit().remove(key).apply()
         pref.edit().putString(key, json).apply()
     }
 
-    fun getUser(key: String): MyUser {
+    fun getUser(key: String): MyUser? {
         val value = pref?.getString(key, null)
         /*GsonBuilder().create().fromJson(value, T::class.java)*/
         return when (value) {
-            null -> MyUser("","","","")
+            null -> null
             else -> {
-                val type: Type = object : TypeToken<UserData>() {}.type
+                val type: Type = object : TypeToken<MyUser>() {}.type
                 Gson().fromJson(value, type)
             }
         }
