@@ -1,4 +1,4 @@
-package uz.gita.maxwaydemo.ui.screens
+package uz.gita.maxwaydemo.ui.pages
 
 import android.os.Bundle
 import android.view.View
@@ -9,6 +9,8 @@ import dagger.hilt.android.AndroidEntryPoint
 import uz.gita.maxwaydemo.R
 import uz.gita.maxwaydemo.databinding.FragmentOrderBinding
 import uz.gita.maxwaydemo.ui.adapter.OrderViewPagerAdapter
+import uz.gita.maxwaydemo.ui.pages.orderpages.OrderCurrentFragment
+import uz.gita.maxwaydemo.ui.pages.orderpages.OrderHistoryFragment
 
 @AndroidEntryPoint
 class OrderFragment : Fragment(R.layout.fragment_order) {

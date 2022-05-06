@@ -11,11 +11,13 @@ import uz.gita.maxwaydemo.data.model.response.AdsDataFromNet
 import uz.gita.maxwaydemo.data.model.response.FoodDataFromNet
 import uz.gita.maxwaydemo.domain.repository.MealRepository
 import uz.gita.maxwaydemo.presentation.viewmodel.HomeViewModel
+import uz.gita.maxwaydemo.usecase.HomeUseCase
 import javax.inject.Inject
 
 @HiltViewModel
 class HomeViewModelImpl @Inject constructor(
-    private val repository: MealRepository
+    private val repository: MealRepository,
+    private val useCase: HomeUseCase
 ) : HomeViewModel, ViewModel() {
 
     override val adsLiveData = MutableLiveData<List<AdsDataFromNet>>()
@@ -25,16 +27,12 @@ class HomeViewModelImpl @Inject constructor(
     override val errorLiveData = MutableLiveData<String>()
     override val openPickDetailFragmentLiveData = MutableLiveData<Unit>()
     override val openAdvertisementFragmentLiveData = MutableLiveData<Unit>()
+    private val list: ArrayList<Int> = arrayListOf(1,2,3,4,5)
 
     init {
         getAllAddsFromRepository()
         getAllCategoriesFromRepository()
-//        getAllFoodsFromRepository()
-    }
-
-
-    override fun loadImagesFromFirebase(): ArrayList<Int> {
-        return repository.loadImagesFromFirebase()
+        getAllCategoriesBySelected(list)
     }
 
     override fun getAllAddsFromRepository() {
@@ -47,19 +45,18 @@ class HomeViewModelImpl @Inject constructor(
     override fun getAllCategoriesFromRepository() {
         repository.getAllCategoriesForRV(viewModelScope).onEach { it ->
             it.onSuccess {
-                categoryLiveData.value = it }
+                categoryLiveData.value = it
+            }
                 .onFailure { errorLiveData.value = it.message }
         }.launchIn(viewModelScope)
     }
 
-    override fun getAllFoodsFromRepository() {
-       /* repository.getAllFoodsPhotosFromFirebase().onEach { it ->
-            it.onSuccess {
-                foodsLiveData.value = it }
-                .onFailure {
-                    errorLiveData.value = it.message }
-        }.launchIn(viewModelScope)*/
-    }
+    override fun getAllCategoriesBySelected(list: List<Int>) {
+        useCase.getAllCategoriesBySelected(viewModelScope, list).onEach {
+            it.onSuccess { }
+                .onFailure { }
 
+        }.launchIn(viewModelScope)
+    }
 
 }

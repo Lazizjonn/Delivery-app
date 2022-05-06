@@ -30,7 +30,6 @@ class FoodAdapter(private val list: List<FoodDataRV>) : RecyclerView.Adapter<Foo
         fun bind() {
             list[absoluteAdapterPosition].apply {
                 binding.foodNameUI.text = foodName
-                Log.d("TTT", "foodAdapter bindda: $foodName")
                 Glide.with(binding.foodPhotoUI)
                     .load(foodPhoto).into(binding.foodPhotoUI)
 

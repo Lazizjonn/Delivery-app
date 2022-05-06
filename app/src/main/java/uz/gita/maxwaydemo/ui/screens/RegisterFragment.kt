@@ -11,11 +11,9 @@ import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import uz.gita.maxwaydemo.R
 import uz.gita.maxwaydemo.data.model.request.RegisterRequest
-import uz.gita.maxwaydemo.data.model.response.CodeTokenData
 import uz.gita.maxwaydemo.databinding.FragmentRegisterBinding
 import uz.gita.maxwaydemo.presentation.viewmodel.RegisterViewModel
 import uz.gita.maxwaydemo.presentation.viewmodel.impl.RegisterViewModelImpl
-import javax.inject.Inject
 
 @AndroidEntryPoint
 class RegisterFragment : Fragment(R.layout.fragment_register) {

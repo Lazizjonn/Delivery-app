@@ -15,7 +15,6 @@ import com.google.firebase.auth.PhoneAuthOptions
 import com.google.firebase.auth.PhoneAuthProvider
 import dagger.hilt.android.AndroidEntryPoint
 import uz.gita.maxwaydemo.R
-import uz.gita.maxwaydemo.app.App
 import uz.gita.maxwaydemo.data.model.response.CodeTokenData
 import uz.gita.maxwaydemo.databinding.FragmentRegisterPhoneBinding
 import uz.gita.maxwaydemo.presentation.viewmodel.impl.RegisterPhoneViewModelImpl

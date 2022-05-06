@@ -1,6 +1,5 @@
 package uz.gita.maxwaydemo.ui.adapter
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -27,14 +26,11 @@ class CategoryAdapter(private val list: List<CategoryDataRV>) : RecyclerView.Ada
 
         fun bind() {
             list[absoluteAdapterPosition].apply {
-
-                Log.d("TTT", "bind:food.size "+(this.list[0].toString()))
                 binding.foodTypeUI.text = categoryName
 
                 val adapter = FoodAdapter(list)
                 adapter.setFoodClickListener { foodName, foodPhoto, foodDescription ->
                     foodClickListener?.invoke(foodName, foodPhoto, foodDescription)
-                    Log.d("TTT", "CategoryAdapter bindda: $foodName")
                 }
                 binding.innerList.adapter = adapter
                 binding.innerList.layoutManager = GridLayoutManager(itemView.context, 2, GridLayoutManager.VERTICAL, false)

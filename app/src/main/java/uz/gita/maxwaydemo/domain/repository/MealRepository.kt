@@ -10,12 +10,9 @@ interface MealRepository {
 
     fun setDataForIntroFragment(): MutableList<IntroData>
 
-    fun loadImagesFromFirebase(): ArrayList<Int>
-
-
     fun getAllAddsPhotosFromFirebase(): Flow<Result<List<AdsDataFromNet>>>
-//    fun getAllCategoriesPhotosFromFirebase(): Flow<Result<List<CategoryDataFromNet>>>
-//    fun getAllFoodsPhotosFromFirebase(): Flow<Result<List<FoodDataFromNet>>>
 
     fun getAllCategoriesForRV(scope: CoroutineScope): Flow<Result<List<CategoryDataRV>>>
+
+    fun getAllCategoriesBySelected(scope: CoroutineScope, list: List<Int>): Flow<Result<List<CategoryDataRV>>>
 }

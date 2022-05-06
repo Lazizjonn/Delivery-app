@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/homeFragment"
-        android:name="uz.gita.maxwaydemo.ui.screens.HomeFragment"
+        android:name="uz.gita.maxwaydemo.ui.pages.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home"/>
     <fragment
@@ -92,12 +92,12 @@
     </fragment>
     <fragment
         android:id="@+id/orderFragment"
-        android:name="uz.gita.maxwaydemo.ui.screens.OrderFragment"
+        android:name="uz.gita.maxwaydemo.ui.pages.OrderFragment"
         android:label="fragment_order"
         tools:layout="@layout/fragment_order" />
     <fragment
         android:id="@+id/editProfileFragment"
-        android:name="uz.gita.maxwaydemo.ui.screens.EditProfileFragment"
+        android:name="uz.gita.maxwaydemo.ui.pages.EditProfileFragment"
         android:label="fragment_edit_profile"
         tools:layout="@layout/fragment_edit_profile" />
 

@@ -7,6 +7,7 @@ import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import uz.gita.maxwaydemo.R
 import uz.gita.maxwaydemo.data.model.common.CategoryDataRV
+import uz.gita.maxwaydemo.data.model.common.ToolbarDataRV
 import uz.gita.maxwaydemo.databinding.ItemCollapsingToolbarBinding
 
 class CollapsingToolbarAdapter(private val list: List<CategoryDataRV>) : RecyclerView.Adapter<CollapsingToolbarAdapter.CollapsingToolbarViewHolder>() {
@@ -30,7 +31,6 @@ class CollapsingToolbarAdapter(private val list: List<CategoryDataRV>) : Recycle
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CollapsingToolbarViewHolder =
         CollapsingToolbarViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_collapsing_toolbar, parent, false))
-
     override fun onBindViewHolder(holder: CollapsingToolbarViewHolder, position: Int) = holder.bind()
     override fun getItemCount(): Int = list.size
 }

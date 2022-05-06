@@ -1,7 +1,6 @@
 package uz.gita.maxwaydemo.data.model.request
 
 import com.google.firebase.auth.PhoneAuthProvider
-import uz.gita.maxwaydemo.ui.screens.RegisterPhoneFragment
 import java.io.Serializable
 
 data class RegisterRequest(

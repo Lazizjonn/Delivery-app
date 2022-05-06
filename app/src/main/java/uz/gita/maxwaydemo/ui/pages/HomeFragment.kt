@@ -1,7 +1,6 @@
-package uz.gita.maxwaydemo.ui.screens
+package uz.gita.maxwaydemo.ui.pages
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.Fragment
@@ -31,7 +30,6 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-//        adapterList = CategoryAdapter(arrayListOf())
 
         viewModel.adsLiveData.observe(viewLifecycleOwner, adsObserver)
         viewModel.categoryLiveData.observe(viewLifecycleOwner, categoryObserver)
@@ -44,7 +42,6 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     }
 
     private val adsObserver = Observer<List<AdsDataFromNet>> {
-        Log.d("TAG", "adsList size: " + it.size)
         binding.adViewPagerLayout.adapter = AdLoopingPagerAdapter(requireContext(), it, true)  // LoopingAdapter
     }
     private val categoryObserver = Observer<List<CategoryDataRV>> {
@@ -61,8 +58,8 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
         binding.categoryRecyclerviewSelf.adapter = adapterList
         binding.categoryRecyclerviewSelf.layoutManager = LinearLayoutManager(requireContext())
-        adapterList?.let {
-            it.setFoodClickListener { foodName, foodPhoto, foodDescription ->
+        adapterList?.let { it2 ->
+            it2.setFoodClickListener { foodName, foodPhoto, foodDescription ->
 
             }
         }
@@ -86,50 +83,3 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     }
 
 }
-/*        private fun toolbarRecycleView() {
-        loadDataForToolbarRecycleView()
-        val adapter = CollapsingToolbarAdapter(toolbarList)
-        binding.menuCollapsingToolbarRecyclerview.adapter = adapter
-        binding.menuCollapsingToolbarRecyclerview.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
-    }
-    private fun loadDataForDoubleRecycleView() {
-        val images = viewModel.loadImagesFromFirebase()
-        for (i in 0 until 5) {
-            val list = ArrayList<FoodDataRV>()
-            for (j in 0 until 9) {
-//                list.add(FoodDataRV("Food name $i$j", images[j % 6], "Food cost $i*$j)", "Description$i*$j "))
-            }
-            categoryListRV.add(CategoryDataRV(0, "Food category $i", list))
-        }
-    }
-
-     private fun setAdViewPager() {
-         val list = listOf<AdsDataFromNet>()
-         adsAdapter = AdLoopingPagerAdapter(requireContext(), list, true)  // LoopingAdapter
-         binding.adViewPagerLayout.adapter = adsAdapter
-     }
-    private fun loadDataForToolbarRecycleView() {
-        val images = viewModel.loadImagesFromFirebase()
-        for (i in 0 until 10) {
-            toolbarList.add(ToolbarData(images[i % 6], "ToolbarName $i"))
-        }
-    }
-
-    private fun doubleRecycleView() {
-        loadDataForDoubleRecycleView()
-        val adapter = CategoryAdapter(categoryListRV)
-        adapter.setClickCategoryNameListener {
-            Toast.makeText(requireContext(), categoryListRV[it].categoryName, Toast.LENGTH_SHORT).show()
-        }
-        adapter.setFoodClickListener { foodName, foodPhoto, foodDescription ->
-            findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToPickDetailFragment(foodName, foodPhoto, foodDescription))
-        }
-        binding.categoryRecyclerviewSelf.adapter = adapter
-        binding.categoryRecyclerviewSelf.layoutManager = LinearLayoutManager(requireContext())
-    }
-
-   /* private fun setAdViewPager() {
-        val list = listOf<AdsDataFromNet>()
-        adsAdapter = AdLoopingPagerAdapter(requireContext(), list, true)  // LoopingAdapter
-//        binding.adViewPagerLayout.adapter = adsAdapter
-    }*/
