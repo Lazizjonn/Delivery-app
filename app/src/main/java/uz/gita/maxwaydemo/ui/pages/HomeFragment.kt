@@ -38,6 +38,8 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         viewModel.errorLiveData.observe(viewLifecycleOwner, errorObserver)
         viewModel.openPickDetailFragmentLiveData.observe(viewLifecycleOwner, openPickDetailFragmentObserver)
         viewModel.openAdvertisementFragmentLiveData.observe(viewLifecycleOwner, openAdvertisementFragmentObserver)
+        viewModel.getAllAddsFromRepository()
+        viewModel.getAllCategoriesFromRepository(arrayListOf())
 
     }
 

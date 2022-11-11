@@ -31,8 +31,6 @@ class MealRepositoryImpl @Inject constructor(
     private val categories = fireStore.collection("category")
     private val foods = fireStore.collection("foods")
 
-
-
     override fun setDataForIntroFragment(): MutableList<IntroData> {
         val list: MutableList<IntroData> = ArrayList()
         list.add(IntroData(R.color.white, R.drawable.group_1))
@@ -50,69 +48,27 @@ class MealRepositoryImpl @Inject constructor(
             }
             trySendBlocking(Result.success(data)).onFailure { trySendBlocking(Result.failure(Exception(it))) }
         }
-            .addOnFailureListener {
-                trySendBlocking(Result.failure(it))
-            }
-        awaitClose {}
-    }.flowOn(Dispatchers.IO)
+                 .addOnFailureListener {
+                     trySendBlocking(Result.failure(it)) }
+                  awaitClose {}
+                }.flowOn(Dispatchers.IO)
 
-    override fun getAllCategoriesForRV(scope: CoroutineScope) = callbackFlow<Result<List<CategoryDataRV>>> {
+    override fun getAllCategoriesForRV(scope: CoroutineScope, list: List<Int>) = callbackFlow<Result<List<CategoryDataRV>>> {
         val categoryList = ArrayList<CategoryDataFromNet>()
         val foodsList = ArrayList<FoodDataFromNet>()
 
         getAllCategoriesPhotosFromFirebase().onEach { it ->
             it.onSuccess { categoryList.addAll(it) }
-                .onFailure {  //errorLiveData.value = it.message
-                }
+                .onFailure { }
         }.launchIn(scope)
-
         getAllFoodsPhotosFromFirebase().onEach { it ->
             it.onSuccess {
                 foodsList.addAll(it)
             }
-                .onFailure {  //errorLiveData.value = it.message
-                }
-        }.launchIn(scope)
-
-        delay(1000)
-        val readyData = ArrayList<CategoryDataRV>()
-
-        for (i in 0 until categoryList.size) {
-            val readyFoods = ArrayList<FoodDataRV>()
-            for (foods in foodsList) {
-                if (categoryList[i].id == foods.categoryID) {
-                    readyFoods.add(FoodDataRV(foods.name!!, foods.image!!, foods.cost!!, foods.description!!))
-                }
-            }
-            readyData.add(CategoryDataRV(i, categoryList[i].name!!, readyFoods))
-
-        }
-
-        categories.get().addOnSuccessListener {
-            trySendBlocking(Result.success(readyData)).onFailure { trySendBlocking(Result.failure(java.lang.Exception(it))) }
-        }
-            .addOnFailureListener {
-                trySendBlocking(Result.failure(it))
-            }
-
-        awaitClose {}
-    }.flowOn(Dispatchers.IO)
-
-    override fun getAllCategoriesBySelected(scope: CoroutineScope, list: List<Int>) = callbackFlow<Result<List<CategoryDataRV>>> {
-        val categoryList = ArrayList<CategoryDataFromNet>()
-        val foodsList = ArrayList<FoodDataFromNet>()
-
-        getAllCategoriesPhotosFromFirebase().onEach { it0 ->
-            it0.onSuccess { categoryList.addAll(it) }
-                .onFailure { }
-        }.launchIn(scope)
-        getAllFoodsPhotosFromFirebase().onEach { it0 ->
-            it0.onSuccess { foodsList.addAll(it) }
                 .onFailure { }
         }.launchIn(scope)
 
         delay(1000)
-
         val readyData = ArrayList<CategoryDataRV>()
 
         if (list.isEmpty()) {
@@ -127,7 +83,7 @@ class MealRepositoryImpl @Inject constructor(
             }
 
         }
-         else {
+        else {
             for (i in list.indices) {
                 val readyFoods = ArrayList<FoodDataRV>()
                 for (foods in foodsList) {
@@ -136,10 +92,17 @@ class MealRepositoryImpl @Inject constructor(
                     }
                 }
                 readyData.add(CategoryDataRV(i, categoryList[i].name!!, readyFoods))
-                Log.d("TTT",categoryList[i].name.toString() )
+                Log.d("TTT", categoryList[i].name.toString())
             }
         }
-    }
+
+        categories.get().addOnSuccessListener {
+            trySendBlocking(Result.success(readyData)).onFailure { trySendBlocking(Result.failure(java.lang.Exception(it))) }
+        }
+                        .addOnFailureListener {
+                trySendBlocking(Result.failure(it)) }
+                         awaitClose {}
+                       }.flowOn(Dispatchers.IO)
 
     private fun getAllCategoriesPhotosFromFirebase() = callbackFlow<Result<List<CategoryDataFromNet>>> {
         categories.get().addOnSuccessListener { querySnapshot ->
@@ -156,7 +119,6 @@ class MealRepositoryImpl @Inject constructor(
             }
         awaitClose {}
     }.flowOn(Dispatchers.IO)
-
     private fun getAllFoodsPhotosFromFirebase() = callbackFlow<Result<List<FoodDataFromNet>>> {
         foods.get().addOnSuccessListener { querySnapshot ->
             val data = querySnapshot.map { queryDocumentSnapshot ->

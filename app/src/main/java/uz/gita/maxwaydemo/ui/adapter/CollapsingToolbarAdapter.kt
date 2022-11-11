@@ -11,13 +11,17 @@ import uz.gita.maxwaydemo.data.model.common.ToolbarDataRV
 import uz.gita.maxwaydemo.databinding.ItemCollapsingToolbarBinding
 
 class CollapsingToolbarAdapter(private val list: List<CategoryDataRV>) : RecyclerView.Adapter<CollapsingToolbarAdapter.CollapsingToolbarViewHolder>() {
+    private val listClicked:ArrayList<Int> = ArrayList<Int>(13)
 
     inner class CollapsingToolbarViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         private val binding = ItemCollapsingToolbarBinding.bind(view)
 
         init {
             binding.menuCollapsingToolbarCardView.setOnClickListener {
-                Toast.makeText(view.context, binding.menuCollapsingToolbarText.text.toString(), Toast.LENGTH_SHORT).show()
+                list[absoluteAdapterPosition].apply {
+                    binding.menuCollapsingToolbarText.text = categoryName
+                    listClicked.add(this.id, id)
+                }
             }
         }
 

@@ -4,7 +4,7 @@ import androidx.lifecycle.ViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import uz.gita.maxwaydemo.data.model.request.RegisterRequest
 import uz.gita.maxwaydemo.presentation.viewmodel.RegisterViewModel
-import uz.gita.maxwaydemo.usecase.RegisterUseCase
+import uz.gita.maxwaydemo.domain.usecase.RegisterUseCase
 import javax.inject.Inject
 
 @HiltViewModel

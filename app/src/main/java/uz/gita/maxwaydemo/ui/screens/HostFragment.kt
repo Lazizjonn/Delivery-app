@@ -9,6 +9,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import uz.gita.maxwaydemo.R
 import uz.gita.maxwaydemo.databinding.FragmentHostBinding
 import uz.gita.maxwaydemo.ui.adapter.HostViewPagerAdapter
+import uz.gita.maxwaydemo.ui.pages.EditProfileFragment
 import uz.gita.maxwaydemo.ui.pages.HomeFragment
 import uz.gita.maxwaydemo.ui.pages.OrderFragment
 

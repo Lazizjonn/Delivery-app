@@ -7,7 +7,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import uz.gita.maxwaydemo.data.model.response.CodeTokenData
 import uz.gita.maxwaydemo.domain.repository.impl.AuthRepositoryImpl
 import uz.gita.maxwaydemo.presentation.viewmodel.RegisterPhoneViewModel
-import uz.gita.maxwaydemo.usecase.RegisterPhoneUseCase
+import uz.gita.maxwaydemo.domain.usecase.RegisterPhoneUseCase
 import javax.inject.Inject
 
 @HiltViewModel

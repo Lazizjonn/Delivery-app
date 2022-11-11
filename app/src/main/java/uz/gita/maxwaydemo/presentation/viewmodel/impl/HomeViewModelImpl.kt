@@ -11,13 +11,11 @@ import uz.gita.maxwaydemo.data.model.response.AdsDataFromNet
 import uz.gita.maxwaydemo.data.model.response.FoodDataFromNet
 import uz.gita.maxwaydemo.domain.repository.MealRepository
 import uz.gita.maxwaydemo.presentation.viewmodel.HomeViewModel
-import uz.gita.maxwaydemo.usecase.HomeUseCase
 import javax.inject.Inject
 
 @HiltViewModel
 class HomeViewModelImpl @Inject constructor(
-    private val repository: MealRepository,
-    private val useCase: HomeUseCase
+    private val repository: MealRepository
 ) : HomeViewModel, ViewModel() {
 
     override val adsLiveData = MutableLiveData<List<AdsDataFromNet>>()
@@ -27,13 +25,6 @@ class HomeViewModelImpl @Inject constructor(
     override val errorLiveData = MutableLiveData<String>()
     override val openPickDetailFragmentLiveData = MutableLiveData<Unit>()
     override val openAdvertisementFragmentLiveData = MutableLiveData<Unit>()
-    private val list: ArrayList<Int> = arrayListOf(1,2,3,4,5)
-
-    init {
-        getAllAddsFromRepository()
-        getAllCategoriesFromRepository()
-        getAllCategoriesBySelected(list)
-    }
 
     override fun getAllAddsFromRepository() {
         repository.getAllAddsPhotosFromFirebase().onEach { it ->
@@ -41,21 +32,12 @@ class HomeViewModelImpl @Inject constructor(
                 .onFailure { errorLiveData.value = it.message }
         }.launchIn(viewModelScope)
     }
-
-    override fun getAllCategoriesFromRepository() {
-        repository.getAllCategoriesForRV(viewModelScope).onEach { it ->
+    override fun getAllCategoriesFromRepository(list: List<Int>) {
+        repository.getAllCategoriesForRV(viewModelScope, list).onEach { it ->
             it.onSuccess {
                 categoryLiveData.value = it
             }
                 .onFailure { errorLiveData.value = it.message }
-        }.launchIn(viewModelScope)
-    }
-
-    override fun getAllCategoriesBySelected(list: List<Int>) {
-        useCase.getAllCategoriesBySelected(viewModelScope, list).onEach {
-            it.onSuccess { }
-                .onFailure { }
-
         }.launchIn(viewModelScope)
     }
 

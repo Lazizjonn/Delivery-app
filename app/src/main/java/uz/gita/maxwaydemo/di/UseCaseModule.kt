@@ -2,11 +2,10 @@ package uz.gita.maxwaydemo.di
 
 import dagger.Binds
 import dagger.Module
-import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ViewModelComponent
-import uz.gita.maxwaydemo.usecase.*
-import uz.gita.maxwaydemo.usecase.impl.*
+import uz.gita.maxwaydemo.domain.usecase.*
+import uz.gita.maxwaydemo.domain.usecase.impl.*
 
 
 @[Module InstallIn(ViewModelComponent::class)]
